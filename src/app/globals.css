@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+/*
+ * Doline Store design tokens — colours, corners and spacing from the DolineStore design system
+ * (the app's own Color.kt and Constants.kt): brand blue #013984, white surfaces on a cool grey
+ * ground, three corners (8 / 16 / full). Type follows dolinesystems.com: Bricolage Grotesque for
+ * headings, Figtree for text; button labels keep the app's wide tracking.
+ */
+@theme {
+  --font-sans: var(--font-figtree), "Segoe UI", Roboto, system-ui, sans-serif;
+  --font-display: var(--font-bricolage), var(--font-figtree), "Segoe UI", system-ui, sans-serif;
+
+  --color-primary: #013984;
+  --color-primary-hover: #2d4678;
+  --color-primary-container: #d9e2ff;
+  --color-on-primary-container: #2d4678;
+  --color-inverse-primary: #afc6ff;
+  --color-ground: #ebeaf1;
+  --color-surface: #ffffff;
+  --color-surface-low: #f3f3fa;
+  --color-surface-mid: #eeedf4;
+  --color-surface-high: #e8e7ef;
+  --color-surface-variant: #e1e2ec;
+  --color-ink: #202127;
+  --color-ink-strong: #1a1b20;
+  --color-ink-2: #44464f;
+  --color-secondary: #575e71;
+  --color-outline: #757780;
+  --color-outline-variant: #c5c6d0;
+  --color-inverse-surface: #2f3036;
+  --color-inverse-ink: #f1f0f7;
+
+  --color-success: #037908;
+  --color-success-container: #dcfce7;
+  --color-on-success-container: #15803d;
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+
+  --color-blue-c: #dbeafe;
+  --color-on-blue-c: #1d4ed8;
+  --color-slate-c: #f1f5f9;
+  --color-on-slate-c: #334155;
+  --color-purple-c: #f3e8ff;
+  --color-on-purple-c: #7e22ce;
+  --color-amber-c: #fef3c7;
+  --color-on-amber-c: #b45309;
+  --color-pink-c: #fce7f3;
+  --color-on-pink-c: #be185d;
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+
+  --shadow-card: 0 1px 2px rgba(32, 33, 39, 0.12), 0 2px 6px rgba(32, 33, 39, 0.08);
+  --shadow-fab: 0 2px 4px rgba(32, 33, 39, 0.14), 0 6px 12px rgba(32, 33, 39, 0.12);
+  --shadow-appbar: 0 2px 6px rgba(32, 33, 39, 0.06);
+
+  --tracking-normal: 1px;
+  --tracking-wide: 2px;
+  --tracking-wider: 3px;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    /* Room for the sticky header when an in-page link scrolls a section into view. */
+    scroll-padding-top: 88px;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  body {
+    background: var(--color-ground);
+    color: var(--color-ink);
+    letter-spacing: 0.2px;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+  input,
+  select,
+  textarea,
+  button {
+    letter-spacing: inherit;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-inverse-primary);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex h-[46px] items-center justify-center gap-2 rounded-sm px-[18px] text-[15px] font-bold whitespace-nowrap transition-colors disabled:cursor-not-allowed disabled:opacity-60;
+    letter-spacing: 2px;
+  }
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-hover;
+  }
+  .btn-default {
+    @apply bg-surface text-primary hover:bg-surface-low;
+  }
+  .btn-tonal {
+    @apply bg-ground text-primary hover:bg-surface-high;
+  }
+  .card {
+    @apply rounded-md bg-surface p-5;
+  }
+  .field {
+    @apply h-12 w-full rounded-sm border border-outline bg-surface px-4 text-base text-ink placeholder:text-ink-2/60 focus:border-primary focus:shadow-[0_0_0_3px_var(--color-primary-container)] focus:outline-none;
+  }
+  .label {
+    @apply text-sm font-bold;
+  }
+  .pill {
+    @apply inline-flex items-center rounded-sm px-2.5 py-1 text-xs font-bold whitespace-nowrap;
+  }
+  .chip {
+    @apply h-11 rounded-sm px-4 text-sm font-bold whitespace-nowrap transition-colors;
+  }
+  .tbl {
+    @apply w-full border-collapse;
+  }
+  .tbl th {
+    @apply border-b border-surface-variant px-4 py-3 text-left text-[13px] font-bold whitespace-nowrap text-ink-2;
+  }
+  .tbl td {
+    @apply border-b border-surface-mid px-4 py-3.5 text-[15px] whitespace-nowrap;
+  }
+  .tbl tr:last-child td {
+    @apply border-b-0;
+  }
+  .eyebrow {
+    @apply text-[13px] font-bold text-primary;
+    letter-spacing: 3px;
+  }
+}
