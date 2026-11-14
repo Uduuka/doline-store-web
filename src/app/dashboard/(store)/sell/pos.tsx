@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState, useTransition } from "react";
 import { Icon } from "@/components/icons";
 import { recordSale } from "@/app/dashboard/actions";
+import { askAdminPassKey } from "@/components/admin-pass-key";
 
 export type PosProduct = { id: string; name: string; category: string; available: number; low: boolean; pricingId: string; price: number; currency: string };
 export type PosClient = { id: string; name: string };
@@ -47,13 +48,16 @@ export function Pos({ products, clients, currency }: { products: PosProduct[]; c
     });
   };
 
-  const submit = () => {
+  const submit = async () => {
     if (!lines.length || pending) return;
+    const adminPassKey = await askAdminPassKey();
+    if (!adminPassKey) return;
     startTransition(async () => {
       const r = await recordSale({
         lines: lines.map((l) => ({ productId: l.p.id, pricingId: l.p.pricingId, quantity: l.q })),
         method,
         clientId: method === "credit" ? clientId || null : null,
+        adminPassKey,
       });
       if (r.ok) {
         setCart({});

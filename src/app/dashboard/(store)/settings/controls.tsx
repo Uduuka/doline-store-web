@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useState, useTransition } from "react";
+import { ADMIN_PASS_KEY_FIELD, askAdminPassKey } from "@/components/admin-pass-key";
 import { FormMessage, SubmitButton } from "@/components/form-bits";
 import { Icon } from "@/components/icons";
 import {
@@ -19,13 +20,21 @@ import { PERMISSIONS, ROLE_PRESETS, encodePermissions, presetMatching, type Perm
 
 type Action = (s: SettingsState, f: FormData) => Promise<SettingsState>;
 
-/** Sends one value to an action at once (a switch or a chip), with its result to show. */
+/**
+ * Sends one value to an action at once (a switch or a chip), with its result to show. Asks for the
+ * admin pass key first; [apply] shows the change only once the key is given, so a cancel leaves
+ * the control as it was.
+ */
 function useInstant(action: Action) {
   const [state, dispatch] = useActionState(action, undefined);
   const [pending, start] = useTransition();
-  const send = (fields: Record<string, string>) => {
+  const send = async (fields: Record<string, string>, apply?: () => void) => {
+    const key = await askAdminPassKey();
+    if (!key) return;
+    apply?.();
     const fd = new FormData();
     for (const [k, v] of Object.entries(fields)) fd.set(k, v);
+    fd.set(ADMIN_PASS_KEY_FIELD, key);
     start(() => dispatch(fd));
   };
   return { state, send, pending };
@@ -60,8 +69,7 @@ export function SettingSwitch({ k, label, description, checked, disabled }: { k:
           label={label}
           disabled={disabled || pending}
           onClick={() => {
-            setOn(!on);
-            send({ key: k, value: String(!on) });
+            send({ key: k, value: String(!on) }, () => setOn(!on));
           }}
         />
       </div>
@@ -103,8 +111,7 @@ export function SettingChoice({ k, value, options, label }: { k: string; value: 
         disabled={pending}
         onPick={(v) => {
           if (v === cur) return;
-          setCur(v);
-          send({ key: k, value: v });
+          send({ key: k, value: v }, () => setCur(v));
         }}
       />
       <Inline state={state} />
@@ -137,8 +144,7 @@ export function MonthlyDay({ value }: { value: string }) {
   const [cur, setCur] = useState(value);
   useEffect(() => setCur(value), [value]);
   const pick = (v: string) => {
-    setCur(v);
-    send({ key: "monthly_report_day", value: v });
+    send({ key: "monthly_report_day", value: v }, () => setCur(v));
   };
   const numbered = cur !== "first" && cur !== "last";
   return (

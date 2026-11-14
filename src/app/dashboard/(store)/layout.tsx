@@ -1,3 +1,5 @@
+import { AdminPassKeyGate } from "@/components/admin-pass-key";
+import { LiveStore } from "@/components/live-store";
 import { Shell } from "@/components/shell";
 import { requireStore } from "@/lib/store";
 
@@ -14,6 +16,8 @@ export default async function DashboardLayout({ children }: { children: React.Re
 
   return (
     <Shell stores={stores} store={store} displayName={displayName} onlineOpen={count ?? 0}>
+      <LiveStore storeId={store.id} />
+      <AdminPassKeyGate />
       {children}
     </Shell>
   );

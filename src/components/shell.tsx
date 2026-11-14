@@ -97,7 +97,7 @@ export function Shell({
           {switching && (
             <div className="absolute right-0 left-0 z-30 mt-1 flex flex-col gap-1 rounded-md bg-surface p-2 shadow-fab">
               {stores.map((s) => (
-                <form key={s.id} action={openStore}>
+                <form key={s.id} action={openStore} data-no-passkey>
                   <input type="hidden" name="store_id" value={s.id} />
                   <button
                     type="submit"
@@ -149,7 +149,7 @@ export function Shell({
             <span className="truncate text-sm font-bold">{displayName}</span>
             <span className="text-xs text-ink-2">Owner</span>
           </span>
-          <form action={signOut}>
+          <form action={signOut} data-no-passkey>
             <button type="submit" aria-label="Sign out" className="flex h-11 w-11 items-center justify-center rounded-sm text-ink-2 hover:bg-surface-high">
               <Icon name="logout" size={20} />
             </button>

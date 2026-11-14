@@ -3,6 +3,7 @@
 import { pbkdf2Sync, randomBytes } from "node:crypto";
 import { revalidatePath } from "next/cache";
 import type { Database } from "@/lib/database.types";
+import { passKeyError } from "@/lib/admin-pass-key";
 import { requireStore } from "@/lib/store";
 import { ALL_PERMISSIONS, CURRENCIES, PAYMENT_METHODS, ROLE_PRESETS, WEEK_DAYS, encodePermissions, type TipRule } from "@/lib/settings-model";
 
@@ -55,6 +56,8 @@ const REPORT_SWITCHES = ["daily_report_enabled", "weekly_report_enabled", "month
 
 /** One setting changed: a switch, or a choice among a few. */
 export async function setSetting(_: SettingsState, form: FormData): Promise<SettingsState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const key = String(form.get("key") ?? "");
   const raw = String(form.get("value") ?? "");
   const { supabase, store } = await requireStore();
@@ -95,6 +98,8 @@ export async function setSetting(_: SettingsState, form: FormData): Promise<Sett
 
 /** The daily close-out report's time, "18:30". */
 export async function setDailyReportTime(_: SettingsState, form: FormData): Promise<SettingsState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const m = String(form.get("time") ?? "").match(/^(\d{1,2}):(\d{2})/);
   if (!m || Number(m[1]) > 23 || Number(m[2]) > 59) return { error: "Choose a time of day." };
   const { supabase, store } = await requireStore();
@@ -110,6 +115,8 @@ export async function setDailyReportTime(_: SettingsState, form: FormData): Prom
 // ---------------------------------------------------------------- Store details
 
 export async function saveStoreDetails(_: SettingsState, form: FormData): Promise<SettingsState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const { supabase, store } = await requireStore();
   const name = String(form.get("name") ?? "").trim();
   const slug = String(form.get("slug") ?? "")
@@ -132,6 +139,8 @@ export async function saveStoreDetails(_: SettingsState, form: FormData): Promis
 
 /** Which payment methods the store accepts, as buyers see on DolineMarket. */
 export async function togglePaymentMethod(_: SettingsState, form: FormData): Promise<SettingsState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const code = String(form.get("value") ?? "");
   if (!PAYMENT_METHODS.some((m) => m.code === code)) return { error: "Unknown payment method." };
   const { supabase, store } = await requireStore();
@@ -148,6 +157,8 @@ export async function togglePaymentMethod(_: SettingsState, form: FormData): Pro
 
 /** Accepts or stops accepting a currency. Dropping the default moves the default to one still accepted. */
 export async function toggleCurrency(_: SettingsState, form: FormData): Promise<SettingsState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const code = String(form.get("value") ?? "");
   if (!CURRENCIES.some((c) => c.code === code)) return { error: "Unknown currency." };
   const { supabase, store } = await requireStore();
@@ -161,6 +172,8 @@ export async function toggleCurrency(_: SettingsState, form: FormData): Promise<
 
 /** Makes a currency the default (accepting it too), locking today's rate as the apps do. */
 export async function setDefaultCurrency(_: SettingsState, form: FormData): Promise<SettingsState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const code = String(form.get("value") ?? "");
   if (!CURRENCIES.some((c) => c.code === code)) return { error: "Unknown currency." };
   const { supabase, store } = await requireStore();
@@ -239,6 +252,8 @@ function asTrail(locked: Record<string, number>): [string, number][] {
 
 /** The tip ladder: lowest order amount first, one rule per amount. */
 export async function saveTipRules(_: SettingsState, form: FormData): Promise<SettingsState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const type = String(form.get("type")) === "amount" ? "amount" : "percent";
   let raw: { amount: string; tip: string }[];
   try {
@@ -267,6 +282,8 @@ export async function saveTipRules(_: SettingsState, form: FormData): Promise<Se
 
 /** The week's hours, saved together. Only rows already set up for this store are changed. */
 export async function saveWorkingHours(_: SettingsState, form: FormData): Promise<SettingsState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const { supabase, store } = await requireStore();
   const ids = form.getAll("id").map(String);
   const minutes = (t: string) => {
@@ -298,6 +315,8 @@ export async function saveWorkingHours(_: SettingsState, form: FormData): Promis
 // ---------------------------------------------------------------- Report recipients
 
 export async function addRecipient(_: SettingsState, form: FormData): Promise<SettingsState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const email = String(form.get("email") ?? "").trim();
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return { error: "Enter a valid email address." };
   const { supabase, store } = await requireStore();
@@ -315,6 +334,7 @@ export async function addRecipient(_: SettingsState, form: FormData): Promise<Se
 }
 
 export async function removeRecipient(form: FormData) {
+  if (await passKeyError(form)) return;
   const { supabase, store } = await requireStore();
   await supabase
     .from("report_email_recipients")
@@ -327,6 +347,8 @@ export async function removeRecipient(form: FormData) {
 // ---------------------------------------------------------------- Delivery zones
 
 export async function saveZone(_: SettingsState, form: FormData): Promise<SettingsState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const id = String(form.get("id") ?? "");
   const num = (k: string) => Number(String(form.get(k) ?? "").replace(/[, ]/g, ""));
   const distance = num("distance");
@@ -346,6 +368,7 @@ export async function saveZone(_: SettingsState, form: FormData): Promise<Settin
 }
 
 export async function deleteZone(form: FormData) {
+  if (await passKeyError(form)) return;
   const { supabase, store } = await requireStore();
   await supabase
     .from("delivery_zones")
@@ -371,6 +394,8 @@ function hashPassKey(passKey: string): { hash: string; salt: string } {
  * pass key. Adding and removing staff stay in the app, which ties each person to their store.
  */
 export async function saveStaff(_: SettingsState, form: FormData): Promise<SettingsState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const { supabase, store, user } = await requireStore();
   const id = String(form.get("staff_id") ?? "");
   const name = String(form.get("name") ?? "").trim();
@@ -425,6 +450,7 @@ export async function saveStaff(_: SettingsState, form: FormData): Promise<Setti
 
 /** Signs a phone or computer out of this account; it asks for a sign-in next time it's opened. */
 export async function signOutDevice(form: FormData) {
+  if (await passKeyError(form)) return;
   const { supabase } = await requireStore();
   await supabase.rpc("sign_out_device", { p_device_id: String(form.get("device_id")) });
   done();

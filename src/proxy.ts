@@ -1,5 +1,6 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
+import { DEVICE_COOKIE, isWebDeviceId, newWebDeviceId } from "@/lib/device";
 
 const PROTECTED = ["/dashboard", "/onboarding"];
 const AUTH_ONLY = ["/sign-in", "/sign-up"];
@@ -9,6 +10,16 @@ const AUTH_ONLY = ["/sign-in", "/sign-up"];
  * and signed-in people out of the sign-in pages.
  */
 export async function proxy(request: NextRequest) {
+  // This browser's device id (lib/device), made on its first visit. Set on the request too, so
+  // the page rendered for that first visit already writes with it.
+  const device = request.cookies.get(DEVICE_COOKIE)?.value;
+  const newDevice = isWebDeviceId(device) ? null : newWebDeviceId();
+  if (newDevice) request.cookies.set(DEVICE_COOKIE, newDevice);
+  const withDevice = (r: NextResponse) => {
+    if (newDevice) r.cookies.set(DEVICE_COOKIE, newDevice, { path: "/", maxAge: 60 * 60 * 24 * 400, sameSite: "lax" });
+    return r;
+  };
+
   let response = NextResponse.next({ request });
 
   const supabase = createServerClient(
@@ -39,17 +50,17 @@ export async function proxy(request: NextRequest) {
     const url = request.nextUrl.clone();
     url.pathname = "/sign-in";
     url.searchParams.set("next", path);
-    return NextResponse.redirect(url);
+    return withDevice(NextResponse.redirect(url));
   }
 
   if (user && AUTH_ONLY.some((p) => path.startsWith(p))) {
     const url = request.nextUrl.clone();
     url.pathname = "/dashboard";
     url.search = "";
-    return NextResponse.redirect(url);
+    return withDevice(NextResponse.redirect(url));
   }
 
-  return response;
+  return withDevice(response);
 }
 
 export const config = {

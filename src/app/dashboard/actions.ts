@@ -4,6 +4,7 @@ import { randomUUID } from "node:crypto";
 import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { checkAdminPassKey, passKeyError, type PassKeyCheck } from "@/lib/admin-pass-key";
 import { STORE_COOKIE, requireStore } from "@/lib/store";
 import { createClient } from "@/lib/supabase/server";
 
@@ -27,6 +28,17 @@ export async function openStore(form: FormData) {
   redirect("/dashboard/overview");
 }
 
+// ---------------------------------------------------------------- Admin pass key
+
+/**
+ * Checks the admin pass key typed into the web's prompt before the write it guards is sent, so a
+ * wrong key is answered in the prompt. The write's own action checks it again: this one only
+ * spares the form a round trip.
+ */
+export async function verifyAdminPassKey(passKey: string): Promise<PassKeyCheck> {
+  return checkAdminPassKey(passKey);
+}
+
 // ---------------------------------------------------------------- Sell
 
 export type SaleLine = { productId: string; pricingId: string; quantity: number };
@@ -42,7 +54,14 @@ export type SaleResult = { ok: true; orderId: string; total: number; currency: s
  * batches hold puts the shortfall on its last batch; the store's negative-stock policy decides
  * whether the cloud accepts that.
  */
-export async function recordSale(input: { lines: SaleLine[]; method: "cash" | "mobile_money" | "credit"; clientId?: string | null }): Promise<SaleResult> {
+export async function recordSale(input: {
+  lines: SaleLine[];
+  method: "cash" | "mobile_money" | "credit";
+  clientId?: string | null;
+  adminPassKey: string;
+}): Promise<SaleResult> {
+  const pass = await checkAdminPassKey(input.adminPassKey);
+  if (!pass.ok) return { ok: false, error: pass.error };
   const { supabase, store, currency } = await requireStore();
   const lines = input.lines.filter((l) => l.quantity > 0);
   if (!lines.length) return { ok: false, error: "Add at least one item." };
@@ -113,6 +132,8 @@ export async function recordSale(input: { lines: SaleLine[]; method: "cash" | "m
 export type FormState = { error?: string; message?: string } | undefined;
 
 export async function addClient(_: FormState, form: FormData): Promise<FormState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const { supabase, store, user } = await requireStore();
   const name = String(form.get("name") ?? "").trim();
   const phone = String(form.get("phone") ?? "").trim();
@@ -134,6 +155,8 @@ export async function addClient(_: FormState, form: FormData): Promise<FormState
  * record_order_payment per order, until the amount runs out.
  */
 export async function recordClientPayment(_: FormState, form: FormData): Promise<FormState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const { supabase, store } = await requireStore();
   const clientId = String(form.get("client_id") ?? "");
   let amount = Number(String(form.get("amount") ?? "").replace(/[, ]/g, ""));
@@ -164,6 +187,8 @@ export async function recordClientPayment(_: FormState, form: FormData): Promise
 // ---------------------------------------------------------------- Expenses
 
 export async function addExpense(_: FormState, form: FormData): Promise<FormState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const { supabase, store, currency } = await requireStore();
   const description = String(form.get("description") ?? "").trim();
   const category = String(form.get("category") ?? "OTHERS");
@@ -179,6 +204,8 @@ export async function addExpense(_: FormState, form: FormData): Promise<FormStat
 // ---------------------------------------------------------------- Settings
 
 export async function updateStore(_: FormState, form: FormData): Promise<FormState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const { supabase, store } = await requireStore();
   const name = String(form.get("name") ?? "").trim();
   if (!name) return { error: "Your store needs a name." };
@@ -191,6 +218,7 @@ export async function updateStore(_: FormState, form: FormData): Promise<FormSta
 }
 
 export async function setPublished(form: FormData) {
+  if (await passKeyError(form)) return;
   const { supabase, store } = await requireStore();
   const publish = String(form.get("publish")) === "true";
   await supabase.rpc("set_store_published", { p_store_id: store.id, p_published: publish });
@@ -204,6 +232,8 @@ export async function setPublished(form: FormData) {
  * batch. Plan limits on items are enforced by the cloud once pricing is switched on.
  */
 export async function addItem(_: FormState, form: FormData): Promise<FormState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const { supabase, store, currency } = await requireStore();
   const name = String(form.get("name") ?? "").trim();
   const category = String(form.get("category") ?? "").trim() || "General";
@@ -241,6 +271,8 @@ export async function addItem(_: FormState, form: FormData): Promise<FormState> 
 
 /** Records a delivery of an item as a new batch, numbered after its last one. */
 export async function receiveStock(_: FormState, form: FormData): Promise<FormState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const { supabase, store, currency } = await requireStore();
   const productId = String(form.get("product_id") ?? "");
   const qty = Number(String(form.get("quantity") ?? "").replace(/[, ]/g, ""));
@@ -286,6 +318,8 @@ async function ownOrder(orderId: string) {
 
 /** Takes a payment against one order (record_order_payment works out PAID / CREDIT itself). */
 export async function recordOrderPayment(_: FormState, form: FormData): Promise<FormState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const { ctx, order } = await ownOrder(String(form.get("order_id") ?? ""));
   if (!order) return { error: "That order isn't in this store." };
   const amount = Number(String(form.get("amount") ?? "").replace(/[, ]/g, ""));
@@ -312,6 +346,8 @@ const MOVES: Record<string, string[]> = {
  * returnOrderItems, which restocks, rather than a bare move to RETURNED.
  */
 export async function setOrderStatus(_: FormState, form: FormData): Promise<FormState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const { ctx, order } = await ownOrder(String(form.get("order_id") ?? ""));
   if (!order) return { error: "That order isn't in this store." };
   const target = String(form.get("target") ?? "");
@@ -324,6 +360,8 @@ export async function setOrderStatus(_: FormState, form: FormData): Promise<Form
 
 /** Puts a sale on a client's account, or takes it off (set_order_client). */
 export async function setOrderClient(_: FormState, form: FormData): Promise<FormState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const { ctx, order } = await ownOrder(String(form.get("order_id") ?? ""));
   if (!order) return { error: "That order isn't in this store." };
   const clientId = String(form.get("client_id") ?? "") || null;
@@ -339,6 +377,8 @@ export async function setOrderClient(_: FormState, form: FormData): Promise<Form
  * `return_<order item id>`.
  */
 export async function returnOrderItems(_: FormState, form: FormData): Promise<FormState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const { ctx, order } = await ownOrder(String(form.get("order_id") ?? ""));
   if (!order) return { error: "That order isn't in this store." };
   if (order.fulfilment_status !== "COMPLETED") return { error: "Only a completed order can take returns." };
@@ -357,6 +397,8 @@ export async function returnOrderItems(_: FormState, form: FormData): Promise<Fo
 
 /** Edits an item's name, category, description and low-stock level. Only an item of the open store. */
 export async function updateItem(_: FormState, form: FormData): Promise<FormState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const { supabase, store } = await requireStore();
   const id = String(form.get("product_id") ?? "");
   const name = String(form.get("name") ?? "").trim();
@@ -385,6 +427,8 @@ export async function updateItem(_: FormState, form: FormData): Promise<FormStat
  * the open store. The change syncs to the store's devices (product_batches broadcasts updates).
  */
 export async function updateBatch(_: FormState, form: FormData): Promise<FormState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const { supabase, store } = await requireStore();
   const id = String(form.get("batch_id") ?? "");
   const { data: batch } = await supabase
@@ -428,6 +472,8 @@ export async function updateBatch(_: FormState, form: FormData): Promise<FormSta
  * (store_contacts), so a client kept in more than one store shows the change in each.
  */
 export async function updateClient(_: FormState, form: FormData): Promise<FormState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const { supabase, store } = await requireStore();
   const id = String(form.get("client_id") ?? "");
   const name = String(form.get("name") ?? "").trim();
@@ -448,6 +494,8 @@ export async function updateClient(_: FormState, form: FormData): Promise<FormSt
 
 /** Edits a supplier's contact: name, phone, email and address. Only a supplier of the open store. */
 export async function updateSupplier(_: FormState, form: FormData): Promise<FormState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const { supabase, store } = await requireStore();
   const id = String(form.get("supplier_id") ?? "");
   const name = String(form.get("name") ?? "").trim();
@@ -468,6 +516,8 @@ export async function updateSupplier(_: FormState, form: FormData): Promise<Form
 
 /** Adds a note to the open store. A title or some text is enough. */
 export async function addNote(_: FormState, form: FormData): Promise<FormState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const { supabase, store } = await requireStore();
   const title = String(form.get("title") ?? "").trim();
   const body = String(form.get("body") ?? "").trim();
@@ -480,6 +530,8 @@ export async function addNote(_: FormState, form: FormData): Promise<FormState> 
 
 /** Edits a note of the open store. */
 export async function updateNote(_: FormState, form: FormData): Promise<FormState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const { supabase, store } = await requireStore();
   const id = String(form.get("note_id") ?? "");
   const title = String(form.get("title") ?? "").trim();
@@ -500,6 +552,7 @@ export async function updateNote(_: FormState, form: FormData): Promise<FormStat
 
 /** Deletes a note the way the apps do (deleted_at), so the deletion syncs to every device. */
 export async function deleteNote(form: FormData) {
+  if (await passKeyError(form)) return;
   const { supabase, store } = await requireStore();
   const id = String(form.get("note_id") ?? "");
   await supabase.from("notes").update({ deleted_at: new Date().toISOString() }).eq("id", id).eq("store_id", store.id);
@@ -517,6 +570,8 @@ export type SupplierOrderState = { error?: string; message?: string; total?: str
  * this account is the buyer. Lines come as JSON: [{ pricing_id, quantity }].
  */
 export async function placeSupplierOrder(_: SupplierOrderState, form: FormData): Promise<SupplierOrderState> {
+  const denied = await passKeyError(form);
+  if (denied) return { error: denied };
   const { supabase, store } = await requireStore();
   const { data: supplier } = await supabase
     .from("suppliers")
