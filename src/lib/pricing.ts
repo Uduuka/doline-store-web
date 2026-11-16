@@ -6,15 +6,12 @@ import type { Database } from "@/lib/database.types";
  * `plan_limits` table — the same rows the Android and desktop apps read — so a limit changed
  * there shows here without a release.
  *
- * Prices: read from `plan_limits.monthly_price` / `extra_store_price` / `currency` once the
- * doline-supabase migration that adds them is applied. Until then the figures below are used:
- * the 2026-11-11 prices from dolineStore's docs/pricing-implementation.md.
+ * Prices come from the same rows (`monthly_price`, `extra_store_price`, `currency`), the one
+ * place they're kept: the website and the apps read them there too, so a price changed in the
+ * table shows everywhere without a release.
  */
 export type PlanCode = "free" | "duka" | "business" | "chain";
 
-const FALLBACK_PRICES: Record<PlanCode, number> = { free: 0, duka: 15000, business: 50000, chain: 120000 };
-const FALLBACK_EXTRA_STORE = 20000;
-const FALLBACK_CURRENCY = "UGX";
 /** A year costs this many months. */
 export const MONTHS_PER_YEAR_PRICE = 10;
 export const TRIAL_DAYS = 14;
@@ -28,11 +25,7 @@ export const PLAN_TAGLINES: Record<PlanCode, string> = {
   chain: "A chain of stores",
 };
 
-type LimitsRow = Database["public"]["Tables"]["plan_limits"]["Row"] & {
-  monthly_price?: number | null;
-  extra_store_price?: number | null;
-  currency?: string | null;
-};
+type LimitsRow = Database["public"]["Tables"]["plan_limits"]["Row"];
 
 export type Plan = {
   code: PlanCode;
@@ -89,9 +82,9 @@ export async function getPlans(): Promise<Plan[]> {
   if (error || !data?.length) return [];
   return (data as LimitsRow[]).map((r) => {
     const code = r.plan as PlanCode;
-    const currency = r.currency ?? FALLBACK_CURRENCY;
-    const monthly = Number(r.monthly_price ?? FALLBACK_PRICES[code] ?? 0);
-    const extraStore = code === "chain" ? Number(r.extra_store_price ?? FALLBACK_EXTRA_STORE) : null;
+    const currency = r.currency;
+    const monthly = Number(r.monthly_price);
+    const extraStore = r.extra_store_price == null ? null : Number(r.extra_store_price);
     return {
       code,
       label: PLAN_LABELS[code] ?? r.plan,

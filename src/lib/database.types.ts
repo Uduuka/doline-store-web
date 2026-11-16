@@ -59,13 +59,6 @@ export type Database = {
             foreignKeyName: "account_devices_keeper_id_fkey"
             columns: ["keeper_id"]
             isOneToOne: false
-            referencedRelation: "profile_view"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "account_devices_keeper_id_fkey"
-            columns: ["keeper_id"]
-            isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["user_id"]
           },
@@ -214,13 +207,6 @@ export type Database = {
             foreignKeyName: "ad_likes_user_id_fkey"
             columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: "profile_view"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "ad_likes_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["user_id"]
           },
@@ -270,13 +256,6 @@ export type Database = {
             foreignKeyName: "ad_ratings_user_id_fkey"
             columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: "profile_view"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "ad_ratings_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["user_id"]
           },
@@ -314,13 +293,6 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "ad_reviews"
             referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "ad_review_replies_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "profile_view"
-            referencedColumns: ["user_id"]
           },
           {
             foreignKeyName: "ad_review_replies_user_id_fkey"
@@ -375,13 +347,6 @@ export type Database = {
             foreignKeyName: "ad_reviews_user_id_fkey"
             columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: "profile_view"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "ad_reviews_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["user_id"]
           },
@@ -420,13 +385,6 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "ads_list_view"
             referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "ad_views_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "profile_view"
-            referencedColumns: ["user_id"]
           },
           {
             foreignKeyName: "ad_views_user_id_fkey"
@@ -484,13 +442,6 @@ export type Database = {
           updated_at?: string
         }
         Relationships: [
-          {
-            foreignKeyName: "addresses_profile_id_fkey"
-            columns: ["profile_id"]
-            isOneToOne: false
-            referencedRelation: "profile_view"
-            referencedColumns: ["user_id"]
-          },
           {
             foreignKeyName: "addresses_profile_id_fkey"
             columns: ["profile_id"]
@@ -588,13 +539,6 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "products"
             referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "ads_seller_id_fkey"
-            columns: ["seller_id"]
-            isOneToOne: false
-            referencedRelation: "profile_view"
-            referencedColumns: ["user_id"]
           },
           {
             foreignKeyName: "ads_seller_id_fkey"
@@ -895,21 +839,7 @@ export type Database = {
             foreignKeyName: "chat_messages_receiver_id_fkey"
             columns: ["receiver_id"]
             isOneToOne: false
-            referencedRelation: "profile_view"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "chat_messages_receiver_id_fkey"
-            columns: ["receiver_id"]
-            isOneToOne: false
             referencedRelation: "profiles"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "chat_messages_sender_id_fkey"
-            columns: ["sender_id"]
-            isOneToOne: false
-            referencedRelation: "profile_view"
             referencedColumns: ["user_id"]
           },
           {
@@ -1186,13 +1116,6 @@ export type Database = {
             foreignKeyName: "feedback_user_id_fkey"
             columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: "profile_view"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "feedback_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["user_id"]
           },
@@ -1270,6 +1193,62 @@ export type Database = {
         }
         Relationships: []
       }
+      lilli_market_manual_chunks: {
+        Row: {
+          chunk_index: number
+          content: string
+          created_at: string
+          embedding: string | null
+          heading: string
+          id: number
+        }
+        Insert: {
+          chunk_index: number
+          content: string
+          created_at?: string
+          embedding?: string | null
+          heading: string
+          id?: never
+        }
+        Update: {
+          chunk_index?: number
+          content?: string
+          created_at?: string
+          embedding?: string | null
+          heading?: string
+          id?: never
+        }
+        Relationships: []
+      }
+      lilli_market_usage: {
+        Row: {
+          day: string
+          messages: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          day: string
+          messages?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          day?: string
+          messages?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lilli_market_usage_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["user_id"]
+          },
+        ]
+      }
       lilli_usage: {
         Row: {
           messages: number
@@ -1290,13 +1269,6 @@ export type Database = {
           user_id?: string
         }
         Relationships: [
-          {
-            foreignKeyName: "lilli_usage_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "profile_view"
-            referencedColumns: ["user_id"]
-          },
           {
             foreignKeyName: "lilli_usage_user_id_fkey"
             columns: ["user_id"]
@@ -1723,13 +1695,6 @@ export type Database = {
             foreignKeyName: "orders_buyer_profile_id_fkey"
             columns: ["buyer_profile_id"]
             isOneToOne: false
-            referencedRelation: "profile_view"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "orders_buyer_profile_id_fkey"
-            columns: ["buyer_profile_id"]
-            isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["user_id"]
           },
@@ -1821,15 +1786,18 @@ export type Database = {
       plan_limits: {
         Row: {
           combined_reports: boolean
+          currency: string
           devices: number | null
           devices_per_store: boolean
           email_recipients: number | null
+          extra_store_price: number | null
           featured_listings: boolean
           items: number | null
           lilli_messages: number | null
           listings: number | null
           log_days: number | null
           marketplace: boolean
+          monthly_price: number
           pdf_export: boolean
           plan: string
           promotions: boolean
@@ -1844,15 +1812,18 @@ export type Database = {
         }
         Insert: {
           combined_reports: boolean
+          currency?: string
           devices?: number | null
           devices_per_store?: boolean
           email_recipients?: number | null
+          extra_store_price?: number | null
           featured_listings: boolean
           items?: number | null
           lilli_messages?: number | null
           listings?: number | null
           log_days?: number | null
           marketplace: boolean
+          monthly_price?: number
           pdf_export: boolean
           plan: string
           promotions: boolean
@@ -1867,15 +1838,18 @@ export type Database = {
         }
         Update: {
           combined_reports?: boolean
+          currency?: string
           devices?: number | null
           devices_per_store?: boolean
           email_recipients?: number | null
+          extra_store_price?: number | null
           featured_listings?: boolean
           items?: number | null
           lilli_messages?: number | null
           listings?: number | null
           log_days?: number | null
           marketplace?: boolean
+          monthly_price?: number
           pdf_export?: boolean
           plan?: string
           promotions?: boolean
@@ -2291,13 +2265,6 @@ export type Database = {
             foreignKeyName: "remittance_accounts_user_id_fkey"
             columns: ["user_id"]
             isOneToOne: true
-            referencedRelation: "profile_view"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "remittance_accounts_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: true
             referencedRelation: "profiles"
             referencedColumns: ["user_id"]
           },
@@ -2416,13 +2383,6 @@ export type Database = {
             foreignKeyName: "riders_profile_id_fkey"
             columns: ["profile_id"]
             isOneToOne: true
-            referencedRelation: "profile_view"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "riders_profile_id_fkey"
-            columns: ["profile_id"]
-            isOneToOne: true
             referencedRelation: "profiles"
             referencedColumns: ["user_id"]
           },
@@ -2525,13 +2485,6 @@ export type Database = {
             foreignKeyName: "store_contacts_linked_profile_id_fkey"
             columns: ["linked_profile_id"]
             isOneToOne: false
-            referencedRelation: "profile_view"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "store_contacts_linked_profile_id_fkey"
-            columns: ["linked_profile_id"]
-            isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["user_id"]
           },
@@ -2567,13 +2520,6 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "stores"
             referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "store_likes_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "profile_view"
-            referencedColumns: ["user_id"]
           },
           {
             foreignKeyName: "store_likes_user_id_fkey"
@@ -2628,13 +2574,6 @@ export type Database = {
             foreignKeyName: "store_ratings_user_id_fkey"
             columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: "profile_view"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "store_ratings_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["user_id"]
           },
@@ -2679,13 +2618,6 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "stores"
             referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "store_reviews_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "profile_view"
-            referencedColumns: ["user_id"]
           },
           {
             foreignKeyName: "store_reviews_user_id_fkey"
@@ -2966,13 +2898,6 @@ export type Database = {
             foreignKeyName: "store_views_user_id_fkey"
             columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: "profile_view"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "store_views_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["user_id"]
           },
@@ -3153,13 +3078,6 @@ export type Database = {
             foreignKeyName: "subscriptions_user_id_fkey"
             columns: ["user_id"]
             isOneToOne: true
-            referencedRelation: "profile_view"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "subscriptions_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: true
             referencedRelation: "profiles"
             referencedColumns: ["user_id"]
           },
@@ -3330,13 +3248,6 @@ export type Database = {
             foreignKeyName: "transactions_user_id_fkey"
             columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: "profile_view"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "transactions_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["user_id"]
           },
@@ -3453,13 +3364,6 @@ export type Database = {
             foreignKeyName: "ads_seller_id_fkey"
             columns: ["seller_id"]
             isOneToOne: false
-            referencedRelation: "profile_view"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "ads_seller_id_fkey"
-            columns: ["seller_id"]
-            isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["user_id"]
           },
@@ -3561,13 +3465,6 @@ export type Database = {
             foreignKeyName: "orders_buyer_profile_id_fkey"
             columns: ["buyer_profile_id"]
             isOneToOne: false
-            referencedRelation: "profile_view"
-            referencedColumns: ["user_id"]
-          },
-          {
-            foreignKeyName: "orders_buyer_profile_id_fkey"
-            columns: ["buyer_profile_id"]
-            isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["user_id"]
           },
@@ -3616,22 +3513,6 @@ export type Database = {
           full_name: string | null
           name: string | null
           user_id: string | null
-        }
-        Insert: {
-          about?: string | null
-          avatar_url?: string | null
-          created_at?: string | null
-          full_name?: string | null
-          name?: string | null
-          user_id?: string | null
-        }
-        Update: {
-          about?: string | null
-          avatar_url?: string | null
-          created_at?: string | null
-          full_name?: string | null
-          name?: string | null
-          user_id?: string | null
         }
         Relationships: []
       }
@@ -3778,6 +3659,34 @@ export type Database = {
           total_count: number
         }[]
       }
+      match_ads: {
+        Args: {
+          category?: string
+          condition?: string
+          lat?: number
+          lng?: number
+          match_count?: number
+          max_price?: number
+          min_price?: number
+          min_similarity?: number
+          query_embedding: string
+          radius_m?: number
+        }
+        Returns: {
+          category_slug: string
+          distance_m: number
+          id: string
+          image_url: string
+          is_new: boolean
+          price: Json
+          product_name: string
+          similarity: number
+          store_id: string
+          store_name: string
+          sub_category_slug: string
+          title: string
+        }[]
+      }
       match_manual_chunks: {
         Args: { match_count?: number; query_embedding: string }
         Returns: {
@@ -3788,7 +3697,32 @@ export type Database = {
           similarity: number
         }[]
       }
+      match_market_manual_chunks: {
+        Args: { match_count?: number; query_embedding: string }
+        Returns: {
+          content: string
+          heading: string
+          id: number
+          similarity: number
+        }[]
+      }
+      my_ad_rating: {
+        Args: { p_ad_id: string }
+        Returns: {
+          can_rate: boolean
+          message: string
+          score: number
+        }[]
+      }
       my_plan: { Args: never; Returns: Json }
+      my_store_rating: {
+        Args: { p_store_id: string }
+        Returns: {
+          can_rate: boolean
+          message: string
+          score: number
+        }[]
+      }
       nearby_ads: {
         Args: {
           lat?: number
@@ -3873,6 +3807,25 @@ export type Database = {
       order_tracking: { Args: { p_order_id: string }; Returns: Json }
       place_marketplace_order: { Args: { p_order: Json }; Returns: Json }
       place_order: { Args: { p_order: Json }; Returns: string }
+      public_profiles: {
+        Args: { ids?: string[] }
+        Returns: {
+          about: string
+          avatar_url: string
+          created_at: string
+          full_name: string
+          name: string
+          user_id: string
+        }[]
+      }
+      rate_ad: {
+        Args: { p_ad_id: string; p_message?: string; p_score: number }
+        Returns: undefined
+      }
+      rate_store: {
+        Args: { p_message?: string; p_score: number; p_store_id: string }
+        Returns: undefined
+      }
       record_category_similarity: {
         Args: {
           p_category_slug: string
@@ -4025,6 +3978,10 @@ export type Database = {
         Returns: undefined
       }
       upsert_batch: { Args: { p_batch: Json }; Returns: string }
+      use_lilli_market_message: {
+        Args: { p_daily_limit: number; p_user_id: string }
+        Returns: Json
+      }
       use_lilli_message: { Args: { p_user_id: string }; Returns: Json }
     }
     Enums: {
