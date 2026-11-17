@@ -91,6 +91,10 @@ export async function signInWithGoogle(form: FormData) {
 
 export async function signOut() {
   const supabase = await createClient();
-  await supabase.auth.signOut();
+  // This browser only. supabase-js signs out with scope "global" by default, which ends the
+  // account's sessions everywhere -- every Doline Store till, phone and computer signed in to it
+  // lost its session at once. On 13 November that left a till selling with nothing reaching the
+  // cloud. The apps sign out locally; so does the web now.
+  await supabase.auth.signOut({ scope: "local" });
   redirect("/sign-in");
 }
