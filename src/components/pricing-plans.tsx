@@ -7,7 +7,7 @@ import type { Plan } from "@/lib/pricing";
 
 const fmt = (n: number, c: string) => `${c} ${Math.round(n).toLocaleString("en-US")}`;
 
-const CTA: Record<string, string> = { free: "Start free", duka: "Choose Duka", business: "Start free trial", chain: "Choose Enterprise" };
+const CTA: Record<string, string> = { free: "Download free", business: "Try it free" };
 
 export function PricingPlans({ plans, trialDays }: { plans: Plan[]; trialDays: number }) {
   const [yearly, setYearly] = useState(false);
@@ -73,11 +73,11 @@ export function PricingPlans({ plans, trialDays }: { plans: Plan[]; trialDays: n
                 ))}
               </ul>
               <Link
-                href={`/sign-up?plan=${p.code}`}
+                href="/download"
                 className="btn btn-default w-full"
                 style={{ letterSpacing: 3 }}
               >
-                {CTA[p.code] ?? `Choose ${p.label}`}
+                {CTA[p.code] ?? "Get the app"}
               </Link>
             </div>
           );

@@ -10,8 +10,8 @@
     "types": "supabase gen types typescript --project-id okpjiokdkxpduvhoxcyk > src/lib/database.types.ts"
   },
   "dependencies": {
-    "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.49.4",
+    "marked": "^15.0.12",
     "next": "^16.4.6",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   title: { default: "Doline Store — point of sale, inventory and credit for your shop", template: "%s · Doline Store" },
   description:
-    "Doline Store rings up sales, tracks every batch on the shelf, keeps your credit book straight and shows what the week earned — on your phone, your desktop and the web.",
+    "Doline Store rings up sales, tracks every batch on the shelf, keeps your credit book straight and shows what the week earned. Free to download and use.",
   applicationName: "Doline Store",
 };
 
