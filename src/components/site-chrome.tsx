@@ -44,15 +44,15 @@ export function SiteFooter({ home = false }: { home?: boolean }) {
           <div className="flex min-w-0 flex-[2_1_280px] flex-col gap-3">
             <Logo variant="white" textClass="text-[26px] text-white" />
             <p className="m-0 max-w-[28em] text-sm leading-relaxed text-primary-container">
-              Point of sale, inventory and credit for small retailers. A product of Doline Systems.
+              Point of sale, inventory and credit for small retailers. A product of Doline Technologies.
             </p>
           </div>
           <FooterCol title="PRODUCT" links={[[anchor("features"), "Features"], [anchor("pricing"), "Pricing"], ["/download", "Download"], ["/docs", "User manual"], ["/whats-new", "What's new"]]} />
-          <FooterCol title="COMPANY" links={[["https://www.dolinesystems.com", "Doline Systems"], ["/terms", "Terms of Service"], ["/privacy", "Privacy Policy"]]} />
+          <FooterCol title="COMPANY" links={[["https://www.dolinesystems.com", "Doline Technologies"], ["/terms", "Terms of Service"], ["/privacy", "Privacy Policy"]]} />
           <FooterCol title="CONTACT" links={[["tel:+256777921033", "+256 777 921 033"], ["https://wa.me/256777921033", "WhatsApp"], ["mailto:davy.kyute@gmail.com", "davy.kyute@gmail.com"]]} />
         </div>
         <div className="flex flex-wrap justify-between gap-3 border-t border-white/20 pt-6 text-[13px] text-primary-container">
-          <span>© {new Date().getFullYear()} Doline Systems · Kampala, Uganda</span>
+          <span>© {new Date().getFullYear()} Doline Technologies Limited · Kampala, Uganda</span>
           <span className="flex gap-4">
             <Link href="/terms" className="text-primary-container no-underline hover:text-white">
               Terms
