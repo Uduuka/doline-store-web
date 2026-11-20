@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Icon, type IconName } from "@/components/icons";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { PricingPlans } from "@/components/pricing-plans";
-import { DownloadButton } from "@/components/download-button";
 import { getPlans, ONLINE_ORDER_FEE_PERCENT, TRIAL_DAYS } from "@/lib/pricing";
 
 // Plans and limits come from the cloud; refresh them hourly.
@@ -18,9 +17,10 @@ const FEATURES: { icon: IconName; tint: string; title: string; body: string }[] 
 ];
 
 const FAQ = [
+  { q: "Is Doline Store really free?", a: "Yes. Downloading the app and running your shop on the Free plan costs nothing, with no time limit and no card needed. You only pay for the paid services listed under Pricing, and only if you choose them." },
   { q: "What happens when my free trial ends?", a: "Your shop moves to Free unless you choose a plan. Nothing is deleted — items over Free's limits stay in your shop; you just can't add more until you upgrade." },
-  { q: "Do I need internet to make a sale?", a: "Not in the Android and desktop apps: sales are saved on the device first and sync when the connection comes back. The web dashboard needs a connection." },
-  { q: "Can I use it on my phone and my computer?", a: "Yes. Sign in with the same account on Android, the Windows app or here on the web — your stores follow you." },
+  { q: "Do I need internet to make a sale?", a: "No. Sales are saved on the device first and sync to the cloud when the connection comes back." },
+  { q: "Can I use it on my phone and my computer?", a: "Yes. Sign in with the same account on each device — your stores, stock and sales follow you." },
   { q: "What currency does it use?", a: "Whatever you set for each store. A shop in Kampala can sell in UGX while another in Nairobi sells in KES." },
   { q: "How does listing on DolineMarket work?", a: "On Duka and above, publish your store in Settings and choose which items to list. Buyers near you see them in the DolineMarket app." },
 ];
@@ -43,19 +43,19 @@ export default async function Home() {
               Run your whole shop from one counter.
             </h1>
             <p className="m-0 max-w-[34em] text-lg leading-relaxed text-ink-2">
-              Doline Store rings up sales, tracks every batch on the shelf, keeps your credit book straight and shows what the week earned — on your phone,
-              your desktop and the web.
+              Doline Store rings up sales, tracks every batch on the shelf, keeps your credit book straight and shows what the week earned. It&apos;s free to
+              download and use — you only pay for the services listed under Pricing, if you choose them.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link href="/sign-up" className="btn btn-primary h-[52px] px-6 text-base" style={{ letterSpacing: 3 }}>
-                Create your store <Icon name="arrowRight" size={20} strokeWidth={2.5} />
+              <Link href="/download" className="btn btn-primary h-[52px] px-6 text-base" style={{ letterSpacing: 3 }}>
+                <Icon name="download" size={20} strokeWidth={2.5} /> Download the app
               </Link>
-              <Link href="/sign-in" className="btn btn-default h-[52px] px-6 text-base" style={{ letterSpacing: 3 }}>
-                Sign in
-              </Link>
-              <DownloadButton />
             </div>
             <div className="flex flex-wrap gap-x-6 gap-y-4 text-sm text-ink-2">
+              <span className="inline-flex items-center gap-2">
+                <span className="text-success"><Icon name="check" size={18} strokeWidth={2.5} /></span>
+                Free to use — no card needed
+              </span>
               <span className="inline-flex items-center gap-2">
                 <span className="text-success"><Icon name="check" size={18} strokeWidth={2.5} /></span>
                 {TRIAL_DAYS} days of Business free
@@ -124,7 +124,6 @@ export default async function Home() {
                 [
                   ["phone", "Android"],
                   ["desktop", "Windows desktop"],
-                  ["globe", "Web"],
                 ] as [IconName, string][]
               ).map(([i, l]) => (
                 <span key={l} className="inline-flex items-center gap-2">
@@ -163,7 +162,7 @@ export default async function Home() {
             <div className="flex min-w-0 flex-[1_1_360px] flex-col gap-3">
               <h2 className="m-0 text-[28px] leading-tight font-extrabold">More than one shop? More than one pair of hands?</h2>
               <p className="m-0 text-base leading-relaxed text-ink-2">
-                Run several stores from one account and switch between them in a tap. Add staff with their own sign-in, and see who sold what.
+                Run several stores from one account and switch between them in a tap. Add staff with their own pass keys, and see who sold what.
               </p>
             </div>
             <ul className="m-0 flex min-w-0 flex-[1_1_320px] list-none flex-col gap-3.5 p-0">
@@ -186,7 +185,7 @@ export default async function Home() {
             </div>
             <ol className="m-0 flex list-none flex-wrap gap-5 p-0">
               {[
-                ["Create your store", "Sign up, name your shop, set its location and currency."],
+                ["Download the app", "Install Doline Store, sign in with your email or Google, then name your shop and set its location and currency."],
                 ["Add what you sell", "Enter items with their price and opening stock, then receive new batches as deliveries arrive."],
                 ["Start selling", "Ring up sales from any device. Stock, credit and reports update as you go."],
               ].map(([t, b], i) => (
@@ -208,7 +207,7 @@ export default async function Home() {
               <h2 className="m-0 text-[clamp(28px,3.6vw,40px)] leading-tight font-extrabold">Get found by buyers near you on DolineMarket</h2>
               <p className="m-0 text-[17px] leading-relaxed text-primary-container">
                 Publish your store and the items you already manage in Doline Store appear on DolineMarket, where nearby shoppers browse stores by location.
-                Orders come straight into your dashboard.
+                Orders come straight into the app.
               </p>
             </div>
             <div className="flex min-w-0 flex-[1_1_300px] flex-col gap-3">
@@ -233,10 +232,11 @@ export default async function Home() {
           <div className="mx-auto flex max-w-[1200px] flex-col gap-8 px-6 py-24">
             <div className="flex max-w-[640px] flex-col gap-3">
               <span className="eyebrow">PRICING</span>
-              <h2 className="m-0 text-[clamp(28px,3.6vw,40px)] leading-tight font-extrabold">A plan for every size of shop</h2>
+              <h2 className="m-0 text-[clamp(28px,3.6vw,40px)] leading-tight font-extrabold">Free to use. Pay only for what you add.</h2>
               <p className="m-0 text-[17px] leading-relaxed text-ink-2">
-                Every new shop gets {TRIAL_DAYS} days of Business free. After that, stay on Free or pick the plan that fits — your data is never deleted
-                when you change.
+                <strong className="text-ink">Doline Store is free.</strong> Downloading it and running your shop on the Free plan costs nothing, for as long as
+                you like. You only pay for the paid services listed below, and only if you choose them. Every new shop gets {TRIAL_DAYS} days of Business free
+                to try them; afterwards it stays on Free unless you pick a plan, and your data is never deleted when you change.
               </p>
             </div>
             {plans.length ? (
@@ -271,15 +271,14 @@ export default async function Home() {
         <section className="mx-auto max-w-[1200px] px-6 pb-24">
           <div className="flex flex-col items-center gap-5 rounded-md bg-surface px-6 py-14 text-center sm:px-10">
             <h2 className="m-0 max-w-[18em] text-[clamp(28px,3.6vw,40px)] leading-tight font-extrabold">Your counter, your stock, your numbers — sorted.</h2>
-            <p className="m-0 text-[17px] text-ink-2">Set up your store today.</p>
+            <p className="m-0 text-[17px] text-ink-2">Free to download, free to use. Set up your store today.</p>
             <div className="flex flex-wrap justify-center gap-3">
-              <Link href="/sign-up" className="btn btn-primary h-[52px] px-7 text-base" style={{ letterSpacing: 3 }}>
-                Create your store
+              <Link href="/download" className="btn btn-primary h-[52px] px-7 text-base" style={{ letterSpacing: 3 }}>
+                <Icon name="download" size={20} strokeWidth={2.5} /> Download free
               </Link>
               <a href="https://wa.me/256777921033" className="btn btn-tonal h-[52px] px-7 text-base" style={{ letterSpacing: 3 }}>
                 Talk to us on WhatsApp
               </a>
-              <DownloadButton />
             </div>
           </div>
         </section>

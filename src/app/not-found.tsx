@@ -11,8 +11,8 @@ export default function NotFound() {
         <Link href="/" className="btn btn-default">
           Home
         </Link>
-        <Link href="/dashboard" className="btn btn-primary">
-          Go to dashboard
+        <Link href="/download" className="btn btn-primary">
+          Download the app
         </Link>
       </div>
     </div>

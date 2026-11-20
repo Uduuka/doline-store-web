@@ -1,0 +1,19 @@
+# Branch rules (see CONTRIBUTING.md): only dev merges into main. GitHub's free plan can't block
+# the merge, but this check fails on any other PR into main, so it shows red.
+name: Main only from dev
+on:
+  pull_request:
+    branches: [main]
+jobs:
+  source-is-dev:
+    runs-on: ubuntu-latest
+    steps:
+      - name: The PR comes from dev
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          if [ "$HEAD_REF" != "dev" ]; then
+            echo "::error::PRs into main come from dev only; this one is from $HEAD_REF. Open it into dev instead."
+            exit 1
+          fi
+          echo "From dev."

@@ -140,3 +140,64 @@
     letter-spacing: 3px;
   }
 }
+
+/* The user manual's chapters, rendered from Markdown (lib/manual). */
+@layer components {
+  .manual {
+    @apply flex flex-col gap-4 text-base leading-relaxed text-ink;
+  }
+  .manual > * {
+    @apply m-0;
+  }
+  .manual h2 {
+    @apply mt-6 text-[24px] leading-tight font-extrabold text-ink-strong;
+    scroll-margin-top: 96px;
+  }
+  .manual h3 {
+    @apply mt-3 text-lg font-bold text-ink-strong;
+    scroll-margin-top: 96px;
+  }
+  .manual ul,
+  .manual ol {
+    @apply flex flex-col gap-2 pl-6;
+  }
+  .manual ul {
+    @apply list-disc;
+  }
+  .manual ol {
+    @apply list-decimal;
+  }
+  .manual li {
+    @apply pl-1;
+  }
+  .manual li > p {
+    @apply m-0;
+  }
+  .manual a {
+    @apply font-bold text-primary;
+  }
+  .manual strong {
+    @apply font-bold text-ink-strong;
+  }
+  .manual code {
+    @apply rounded-[4px] bg-surface-mid px-1.5 py-0.5 text-[0.9em];
+  }
+  .manual blockquote {
+    @apply rounded-sm border-l-4 border-primary bg-surface px-5 py-3;
+  }
+  .manual-table {
+    @apply overflow-x-auto rounded-md bg-surface;
+  }
+  .manual-table table {
+    @apply w-full border-collapse text-left text-[14px] leading-normal;
+  }
+  .manual-table th {
+    @apply border-b border-surface-variant px-4 py-3 font-bold whitespace-nowrap text-ink-2;
+  }
+  .manual-table td {
+    @apply border-b border-surface-mid px-4 py-3 align-top;
+  }
+  .manual-table tr:last-child td {
+    @apply border-b-0;
+  }
+}

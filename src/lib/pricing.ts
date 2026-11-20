@@ -1,5 +1,5 @@
-import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/lib/database.types";
+import { publicClient } from "@/lib/supabase";
 
 /**
  * The plans Doline Store sells. What each one allows comes from the cloud's public
@@ -75,10 +75,7 @@ function titleFreq(f: string) {
 
 /** Every plan, smallest first, from the cloud. Public data: read with the anonymous key. */
 export async function getPlans(): Promise<Plan[]> {
-  const supabase = createClient<Database>(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!, {
-    auth: { persistSession: false },
-  });
-  const { data, error } = await supabase.from("plan_limits").select("*").order("rank");
+  const { data, error } = await publicClient().from("plan_limits").select("*").order("rank");
   if (error || !data?.length) return [];
   return (data as LimitsRow[]).map((r) => {
     const code = r.plan as PlanCode;
