@@ -87,7 +87,7 @@ export function LegalTable({ head, rows }: { head: string[]; rows: React.ReactNo
 export function Contact({ closing }: { closing: string }) {
   return (
     <div className="flex flex-col gap-2 rounded-md bg-surface p-6">
-      <p>Doline Systems, Kampala, Uganda</p>
+      <p>Doline Technologies Limited, Kampala, Uganda</p>
       <p>
         Email: <a href="mailto:davy.kyute@gmail.com">davy.kyute@gmail.com</a>
       </p>

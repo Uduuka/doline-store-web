@@ -27,7 +27,7 @@ export default function PrivacyPage() {
     >
       <Section title="1. Who we are and what this covers">
         <p>
-          Doline Store is made by Doline Systems of Kampala, Uganda (&quot;we&quot;, &quot;us&quot;). This policy covers the Doline Store app on Android and
+          Doline Store is made by Doline Technologies Limited of Kampala, Uganda (&quot;we&quot;, &quot;us&quot;). This policy covers the Doline Store app on Android and
           Windows, the cloud service it syncs with, and Lilli, its built-in assistant. DolineMarket, our app for shoppers, has its own privacy policy.
         </p>
         <p>
@@ -216,7 +216,7 @@ export default function PrivacyPage() {
             Staff permissions control who can see costs, reports and settings. Admin approvals and sensitive actions are recorded in the activity log, which cannot
             be edited or cleared from the app.
           </li>
-          <li>Only the Doline Systems people who need it for support or maintenance can reach production data.</li>
+          <li>Only the Doline Technologies people who need it for support or maintenance can reach production data.</li>
         </ul>
         <p>No system is perfectly secure. If a breach puts your personal data at risk, we will tell you and the Personal Data Protection Office, as the law requires.</p>
       </Section>

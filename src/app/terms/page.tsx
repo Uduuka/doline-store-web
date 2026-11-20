@@ -8,21 +8,21 @@ import { Contact, LegalPage, Section } from "@/components/legal";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "The agreement between your business and Doline Systems for using Doline Store.",
+  description: "The agreement between your business and Doline Technologies Limited for using Doline Store.",
 };
 
 export default function TermsPage() {
   return (
     <LegalPage
       title="Terms of Service"
-      intro="These terms are the agreement between your business and Doline Systems for using Doline Store, on Android and Windows."
+      intro="These terms are the agreement between your business and Doline Technologies Limited for using Doline Store, on Android and Windows."
       effective={{ label: "25 October 2026", iso: "2026-10-25" }}
       other={{ href: "/privacy", label: "Privacy Policy" }}
     >
       <Section title="1. About these terms">
         <p>
-          By creating an account or using Doline Store, you agree to these terms on behalf of the business you use it for. &quot;Doline Systems&quot;,
-          &quot;we&quot; and &quot;us&quot; mean Doline Systems of Kampala, Uganda. &quot;You&quot; means the business and the person who accepts these terms for
+          By creating an account or using Doline Store, you agree to these terms on behalf of the business you use it for. &quot;Doline Technologies&quot;,
+          &quot;we&quot; and &quot;us&quot; mean Doline Technologies Limited of Kampala, Uganda. &quot;You&quot; means the business and the person who accepts these terms for
           it.
         </p>
         <ul>
@@ -227,7 +227,7 @@ export default function TermsPage() {
 
       <Section title="15. Intellectual property">
         <p>
-          Doline Store, DolineMarket, Lilli, the Doline name and logos, and the software, designs, manual and content we provide belong to Doline Systems or our
+          Doline Store, DolineMarket, Lilli, the Doline name and logos, and the software, designs, manual and content we provide belong to Doline Technologies Limited or our
           licensors. While you follow these terms, we give you a non-exclusive, non-transferable right to install and use Doline Store for your business. We keep
           all other rights.
         </p>
