@@ -1,0 +1,29 @@
+#!/bin/bash
+# Branch rules (see CONTRIBUTING.md): work goes on a branch, merges into dev by PR, and only dev
+# merges into main, by PR. GitHub's free plan can't enforce that, so this hook does on this machine.
+# Turn it on once per clone:  git config core.hooksPath .githooks
+#
+# - main: never pushed to. It changes only by merging a PR from dev on GitHub.
+# - dev: pushed to only to catch up with main after a release (the new dev is already in main).
+#   Everything else reaches dev by merging a PR on GitHub.
+remote="$1"
+zero=0000000000000000000000000000000000000000
+while read -r local_ref local_sha remote_ref remote_sha; do
+  case "$remote_ref" in
+    refs/heads/main)
+      echo "pre-push: main only changes by merging a PR from dev on GitHub." >&2
+      exit 1 ;;
+    refs/heads/dev)
+      if [ "$local_sha" = "$zero" ]; then
+        echo "pre-push: dev can't be deleted." >&2
+        exit 1
+      fi
+      git fetch -q "$remote" main 2>/dev/null || true
+      if git merge-base --is-ancestor "$local_sha" FETCH_HEAD 2>/dev/null; then
+        continue  # Catching dev up with main after a release.
+      fi
+      echo "pre-push: dev only changes by merging a PR on GitHub. Push your branch and open a PR into dev." >&2
+      exit 1 ;;
+  esac
+done
+exit 0
