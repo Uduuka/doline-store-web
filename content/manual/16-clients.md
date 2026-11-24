@@ -6,6 +6,8 @@ on credit.
 
 ### The list
 
+![Clients: each client's name and phone, with what they owe on the right](https://downloads.dolinesystems.com/manual/16-clients.png)
+
 Headed "Clients", one row per client showing their name and their phone number
 -- or their address if there is no phone, or "No contact details" if neither. A
 client who owes the shop money also shows "Owes" and the amount on the right. The
@@ -25,6 +27,8 @@ the same way (section 11).
 
 ### A client's own screen
 
+![A client: Spent and Owes, their phone with a call button, address, and Ask Lilli about the client](https://downloads.dolinesystems.com/manual/16-client.png)
+
 Headed "Client", with their name and "Client since ..." underneath, then three
 figures: **Orders** (how many), **Spent** (what they have paid for in total) and
 **Owes** (what is still outstanding on their credit orders, with how many orders
@@ -34,8 +38,19 @@ that is). Then:
   own dialler, so you can ring a customer without copying the number out. "Not
   provided" if there is none.
 - **Address** -- or "Not provided".
+- **Ask Lilli about <client>** -- opens a chat with Lilli about this client
+  (section 22).
 - **ORDERS** -- every order this client has placed: number, progress, amount and
   date. Tapping one opens it. "No orders placed yet." when there are none.
+
+**Message this client.** When the client is linked to a DolineMarket account --
+they have bought from the shop on DolineMarket -- a chat icon, "Message this
+client", appears in the top bar. It opens the shop's conversation with them in
+the Inbox (section 25), apart from any one order. It shows for the owner and for
+staff with "Message clients", on a plan with messaging. If it cannot open it,
+it says "This client hasn't bought here on DolineMarket yet.", "You need the
+Message clients permission.", "Messaging isn't on this store's plan." or "You're
+offline. Try again when this till is online."
 
 The menu in the top bar holds "Edit client", which reopens the same three
 fields, and "Delete client" in red, which confirms by name and warns that it

@@ -1,19 +1,21 @@
 ## 23. Help and feedback `[Both]`
 
-Headed "Help & Feedback", from the menu drawer. Four things on one screen: a
-search, the FAQs, two support shortcuts, and a feedback form.
+Headed "Help & feedback", from the menu drawer. Four things on one screen: a
+search, two support shortcuts, the FAQs, and a feedback form.
+
+![Help & feedback: Search help articles, Quick support with Ask Lilli and Call us, Frequently asked, and Help us improve](https://downloads.dolinesystems.com/manual/23-help.png)
 
 ### What is on it
 
 - **Search help articles** -- opens a search screen: "Search FAQs or help
   articles", with "No FAQs or articles matched your search." when nothing hits.
-- **Frequently Asked Questions** -- browsable categories, each opening as "FAQ
-  on <category>". See the warning below.
-- **Call Us** -- under Quick support: the support number, +256300790380, handed
-  to the phone's dialler.
-- **Ask Lilli** -- also under Quick support, marked "AI Assistant": straight to
+- **Ask Lilli** -- under Quick support, "Assistant, any time": straight to
   section 22.
-- **Submit Feedback** -- under "Help us improve": "Suggest a feature or report a
+- **Call us** -- also under Quick support: the support number, +256300790380,
+  handed to the phone's dialler.
+- **Frequently asked** -- browsable categories, each opening as "FAQ on
+  <category>". See the warning below.
+- **Send feedback** -- under "Help us improve": "Suggest a feature or report a
   bug."
 
 ### Do not trust the FAQ section
@@ -37,9 +39,10 @@ questions from it rather than from the FAQs.
 ### Keeping Doline Store up to date
 
 When a newer version is out, the app says so as it opens (and checks again every
-few hours):
+few hours). To ask straight away, use **Check for updates** under the version at
+the foot of Settings (section 20).
 
-- **"Doline Store 1.6.4 is available"** -- with what is new, **Update** and
+- **"Doline Store 1.7.2 is available"** (whatever the new number is) -- with what is new, **Update** and
   **Later**. Later puts it off until the next version.
 - **"Update Doline Store to continue"** -- this version is too old to sync with
   the cloud any more, so nothing else opens until it is updated. Anything not yet

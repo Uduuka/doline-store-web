@@ -1,8 +1,10 @@
 ## 20. Settings `[Mixed]`
 
-Headed "Settings", from the menu drawer. Fourteen screens grouped into five
-sections, with a "Search settings" field that matches a screen's name, its
-description or its section.
+Headed "Settings", from the menu drawer. Seventeen screens grouped into five
+sections, under the store's cover card, with a search button that matches a
+screen's name, its description or its section.
+
+![Settings: the store's cover card, then the Store and Operations sections](https://downloads.dolinesystems.com/manual/20-settings.png)
 
 Settings opens for admins and for staff given the "Store settings" permission
 (section 21); anyone else is asked for an admin's pass key. Even then, five
@@ -19,11 +21,22 @@ log (Free).
 - **Access** -- Staff & Security and Activity `[Admin only]`; see section 21.
 - **Account** -- Plan and Active devices `[Admin only]`, and Backup & sync; see
   section 24.
-- **Device** -- POS Hardware: printers, scanners, drawers and scales.
+- **Device** -- Message storage, Google Drive backup, and Share messages with my
+  other devices (all below), and POS Hardware: printers, scanners, drawers and
+  scales.
 
-At the very end of the list, "Doline Store 1.6.5 (10605)" is the version on this
+![The end of Settings: the Device section, the version Doline Store 1.7.1 (10701), and Check for updates](https://downloads.dolinesystems.com/manual/20-settings-device.png)
+
+At the very end of the list, "Doline Store 1.7.1 (10701)" is the version on this
 device -- the thing to quote to support, and the way to check a phone has
 updated (section 23). On a computer it is at the foot of the section list.
+
+**Check for updates**, under the version, asks Doline now. It answers "This is
+the latest version." or "Doline Store 1.7.2 is available" with "Update on Google
+Play" (or "Download update" for a copy installed from Doline's own download).
+Updating keeps the store's data as it is; anything not yet synced stays on the
+device and syncs once it has updated. A version too old to sync any more is
+stopped with "Update Doline Store to continue" until it is updated.
 
 ### Read this before changing anything here
 
@@ -76,8 +89,8 @@ low or expiring) and Reviews and ratings; and a Pop-ups mode of "Everything",
 "Urgent only" (marketplace orders and stuck changes) or "Off". Shared by every
 device on the store.
 
-Notifications collect in the account menu on the dashboard, and on a computer also
-on the sidebar's Notifications page, which shows how many are unread. A marketplace order
+Notifications collect under Notifications in the menu drawer (section 9), and on
+a computer on the sidebar's Notifications page; both show how many are unread. A marketplace order
 reaches the phone even with the app closed. Sound and vibration for each kind
 are set in the phone's own notification settings for Doline Store.
 
@@ -185,3 +198,88 @@ or not, changes nothing about how the app behaves. Sales are not printed as
 receipts, and the POS scanner uses the phone's own camera rather than any scanner
 named here. Treat this as a note of what hardware the till is meant to have, not
 as a working integration.
+
+### Message storage
+
+![Message storage: the total, the warning that this device is the archive, and each conversation with its messages, media and a clear button](https://downloads.dolinesystems.com/manual/20-message-storage.png)
+
+What the store's messages take up on this device. At the top, the photos and
+voice notes in total ("20.2 MB of photos and voice notes") and how many messages
+in how many conversations. Under it: "This device is where your messages are
+kept. The cloud keeps text 30 days and media 7, so what you clear here may not
+come back."
+
+Then each conversation, biggest first, with its messages and media ("15
+messages · 20.2 MB in 6 files"). The clear button on a row offers:
+
+- **Clear photos and voice notes** -- frees the media; the messages stay, marked
+  "Removed from this device" where the media was.
+- **Clear chat on this device** -- deletes the conversation's messages and media
+  from this device only. Everyone else keeps theirs, and new messages still
+  arrive here.
+
+Each asks first. Only conversations the person on shift may see are listed.
+Empty, it says "Nothing stored yet".
+
+### Google Drive backup
+
+![Google Drive backup before connecting: what a backup is, and Connect Google Drive](https://downloads.dolinesystems.com/manual/20-drive-backup.png)
+
+Your own copy of this device's messages and store records, in your own Google
+Drive: "A backup puts an encrypted copy of this device's messages and store
+records in your own Google Drive, in a hidden folder only Doline can use. Doline
+keeps the key, never the data. Your store records also sync to Doline's cloud as
+usual: this is your own copy."
+
+**Connect Google Drive** opens Google to choose the account and allow it. Once
+connected the screen shows when it last backed up, and:
+
+- **What to back up** -- Messages; Photos, voice notes and videos ("the biggest
+  part of a backup"); Items and stock; Orders and payments; Clients and
+  suppliers; Expenses and notes; and Store settings.
+- **Back up now** -- sends it straight away ("Backing up…", then "Backed up.").
+  Otherwise it "Backs up by itself once a day on Wi-Fi."
+- **Restore from Google Drive** -- "Restoring only adds what's missing here and
+  from Doline's cloud, then syncs it; it never changes anything, and what was
+  deleted stays deleted." Use it on a new or replacement device; a device that
+  already has everything says "Nothing to restore: this device has everything in
+  the backup."
+- **Disconnect Google Drive** -- "This device stops backing up. What's in Drive
+  stays there, and you can connect again to restore it."
+
+Connecting is the owner's: a staff member is told "Ask the owner to connect
+Google Drive: it needs admin mode." Backups are made from the store's tills and
+the owner's devices -- "not a staff member's own phone".
+
+If a week passes with no backup, a notification says "No Google Drive backup
+this week -- No backup in the last 7 days. Back up now, or connect Wi-Fi for the
+daily one." If Google needs permission again, it says "Google needs you to
+connect Drive again." -- open this screen and connect again.
+
+### Share messages with my other devices
+
+![Share with my other devices: devices to send to, conversations, how far back, and the media switch](https://downloads.dolinesystems.com/manual/20-share-messages.png)
+
+Headed "Share with my other devices". It sends conversations on this device to
+the account's other phones and tills: "for one that was off longer than Doline
+keeps messages (30 days), or a new till. The copy in the cloud is deleted once
+they have it, and after 24 hours at the latest."
+
+- **Send to** -- the account's other signed-in devices, each with when it was
+  last seen. Tick the ones to send to.
+- **Conversations** -- tick each, or Select all. The owner may share any
+  conversation; staff only their own.
+- **From the last** -- 7 days, 30 days, 90 days or Everything.
+- **Include photos, voice notes and videos** -- "Without them, the messages
+  arrive and the media shows as no longer available."
+
+Before sending it shows the size ("About 20 MB: 18 messages"); **Share** sends
+it ("Sending part 1 of 3…"), then "Sent. Your other devices pick it up the next
+time they're online, within 24 hours." One share carries at most 2 GB -- "That's
+over 2 GB, the most one share can carry. Choose fewer conversations, a shorter
+time, or leave out media." Below, "Sent from this device today" lists what went
+and how many devices have received it, and "Shared with this device" what
+arrived. "Anything another device shares with this one arrives by itself";
+**Check now** looks straight away. Sharing is done from the store's tills and
+the owner's phone, not a staff member's own phone.
+

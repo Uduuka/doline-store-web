@@ -4,6 +4,8 @@ Who the shop buys from, reached from Suppliers in the menu drawer. It mirrors
 Clients almost exactly, with one addition: a supplier can be linked to the items
 they supply.
 
+![Suppliers: the empty list, with search and the Add a supplier button](https://downloads.dolinesystems.com/manual/17-suppliers.png)
+
 Anyone can look suppliers up. Adding or changing one needs the "Suppliers"
 permission, and placing an order with a supplier needs "Receive stock" (section
 21); without them an admin is asked to allow it.

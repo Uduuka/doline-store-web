@@ -5,6 +5,8 @@ dashboard. Where the dashboard gives you the shop at a glance, this is the scree
 for answering a question with a number. On a phone, pulling the report down
 syncs it first (see the overview).
 
+![Reports: This week, This month or a custom period, and the Sales trend](https://downloads.dolinesystems.com/manual/19-reports.png)
+
 Note the tag: Reports opens for admins and for staff given the "Reports"
 permission (section 21). Anyone else sees "You don't have permission for this.
 An admin can open it for you with their pass key." and an "Ask an admin" button.

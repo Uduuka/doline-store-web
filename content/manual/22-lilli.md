@@ -1,12 +1,55 @@
 ## 22. Lilli `[Both]`
 
-The fifth bottom tab, and also an entry in the menu drawer. A chat screen that
-opens with "Hi, I'm Lilli! Ask me about your store's sales, inventory, or
-orders, or how to do something in the app."
+The fifth bottom tab. A chat screen that opens with "Hi, I'm Lilli! Ask me about
+your store's sales, inventory, or orders, or how to do something in the app."
+and, under "TRY ASKING", four starters: How were sales today?, What is running
+low?, Who owes me money? and How do I restock an item?
 
-Type a question and send it; "Clear conversation" starts again. Lilli answers in
-plain language, and the two things she is good at are looking something up in
-your own data and explaining how to do something in the app.
+![Lilli: her greeting, the Try asking starters, and the message box](https://downloads.dolinesystems.com/manual/22-lilli.png)
+
+Type a question and send it, or tap a starter. Lilli answers in plain language,
+and the two things she is good at are looking something up in your own data and
+explaining how to do something in the app.
+
+![Asking Lilli "What is running low?" and getting a table of the items lowest in stock](https://downloads.dolinesystems.com/manual/22-ask-lilli.gif)
+
+### Her answers
+
+Lilli's answers are in her own light bubbles, with three animated dots while she
+is working, and a time under every message ("14:02", "Yesterday 14:02", "12 Nov
+14:02"). A table in an answer is drawn as a table; one too wide for the screen
+scrolls sideways.
+
+![Lilli's answer to What is running low?: a table of items and their categories](https://downloads.dolinesystems.com/manual/22-lilli-answer.png)
+
+![Holding down one of Lilli's answers: Copy](https://downloads.dolinesystems.com/manual/22-message-menu.png)
+
+Hold a message down for its menu: **Copy** on any message, and on your own
+questions also **Ask again**, which sends the same question once more (not while
+she is still answering).
+
+### Chats, kept on this device
+
+![The Chats sheet: New chat, each past chat with its first question, and Delete all chats](https://downloads.dolinesystems.com/manual/22-chats.png)
+
+Lilli keeps your conversations with her on this device, several of them. The
+**Chats** button in the top bar lists them, newest first, each named after its
+first question ("What is running low? -- 1 question · 23:25"). Tap one to carry
+on; the bin on a row deletes it, and **Delete all chats** deletes every one,
+after asking. **New chat** -- in the sheet, and the + in the top bar -- starts a
+fresh one. "Your plan's Lilli messages count across all your chats."
+
+Each staff member sees only their own chats, in this store, on this device. They
+are not synced, so they do not follow you to another till, and they are deleted
+when the device signs out.
+
+### Ask Lilli about …
+
+An item's screen, an order's, a client's and a supplier's each have an **Ask
+Lilli about <it>** row, with two suggested questions under it (for an item: "How
+fast is it selling? · When should I restock it?"). Tapping it opens Lilli on a
+new chat about that thing, with questions that name it and an "About …" chip over
+the message box, so a typed question is asked about it too.
 
 ### What she can look up
 
@@ -135,14 +178,19 @@ next unless they are the admin.
   one back. An admin resetting it (section 21) is the only route.
 - **She needs internet.** Lilli is the one part of Doline that does not work
   offline, because the answering happens on a server. With no connection you get
-  "Sorry, I couldn't reach the server just now. Please try again in a moment."
-  Everything else -- selling, stock, orders -- carries on as normal.
-- **She needs you signed in.** "You need to be signed in to chat with Lilli."
+  "I can't reach Doline right now. Check this device's internet connection and
+  try again." Everything else -- selling, stock, orders -- carries on as normal.
+- **She needs the device signed in.** "This device needs to sign in to its
+  account again before I can answer. Ask the account admin."
+- **She says what went wrong.** "That took more steps than expected. Let's try a
+  simpler question." or "Something went wrong on Doline's side. Please try again
+  in a few minutes." A question that fails part-way is taken back, so the chat
+  carries on normally afterwards.
 - **She has a monthly allowance.** Each plan includes a number of Lilli messages a
   month, counted across the whole account: 5 on Free, 100 on Duka, 1,000 on
   Business and 3,000 on Enterprise (section 24). Once plans start, a message past
-  the month's allowance gets the plan's message ("Lilli's count starts again on
-  the 1st.") instead of an answer. Settings > Plan shows how many are used.
+  the month's allowance gets "You've used this month's Lilli messages on your
+  plan. They start again next month." instead of an answer. Settings > Plan shows how many are used.
 
 Lilli answers as whoever is on shift, with that person's access, so the answers
 a staff member gets are not the answers an admin gets. Ask her the question you

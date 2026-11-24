@@ -7,6 +7,8 @@ see this screen in the Settings list.
 Its own blurb states the rule the rest of the app runs on: "Staff members unlock
 this device with their pass key."
 
+![Staff & Access: Lock automatically after, and the staff list with the admin marked](https://downloads.dolinesystems.com/manual/21-staff-and-security.png)
+
 ### Locking automatically
 
 "Lock automatically after" sets how long this device may sit untouched before it
@@ -16,17 +18,20 @@ section.
 
 It belongs to the device, not the shop: a shared counter till might lock after a
 minute while the owner's own laptop never does. It takes effect straight away,
-and it is never synced to other devices. Whatever it is set to, Lock in the
-account menu (or the sidebar's Lock button on a computer) always works.
+and it is never synced to other devices. Whatever it is set to, "Lock the till"
+in your own menu at the foot of the drawer (or the sidebar's Lock button on a
+computer) always works.
 
 ### The staff list
 
-One row per staff member, with an "Admin" marker on those who have it, or
-"Unnamed staff" where no name was entered. "No staff members added yet." on a
-shop with only its admin. "Add new staff" creates one; a per-row menu holds
-"Edit staff" and "Delete staff".
+One row per staff member with their role, an "Admin" marker on those who have
+it, and "(you)" beside your own name; "Unnamed staff" where no name was entered.
+Tapping a row opens "Edit staff"; the bin icon on a row deletes that staff
+member, after asking. The round "Add staff" button at the bottom right adds one.
 
 ### Adding or editing a staff member
+
+![Edit staff: Full names, Username, Role, Pass key, Admin access and Permissions](https://downloads.dolinesystems.com/manual/21-staff-form.png)
 
 - **Full names** -- required. This is the name that appears on the lock screen
   for them to tap, so use the name they are known by at the counter.
@@ -47,7 +52,7 @@ required."; "Could not determine the current store." means something went wrong
 before the form opened, and is worth reporting rather than retrying.
 
 Tell the new staff member their starting pass key and have them change it
-themselves from the account menu (section 9). A pass key the admin also knows is
+themselves from their own menu at the foot of the drawer (section 9). A pass key the admin also knows is
 not really theirs, and the whole point of recording sales against a name is that
 only that person could have made them.
 
@@ -94,6 +99,9 @@ on. Each line is a switch:
   cost, everywhere outside Reports.
 - **Store settings** -- working hours, delivery, receipts, POS hardware and the
   rest of Settings (section 20).
+- **Message clients** -- chat with DolineMarket buyers about their orders and
+  with linked clients (sections 15, 16 and 25). Without it, a staff member sees
+  the team chat and their own direct messages, but not buyers' conversations.
 
 Above the switches are three starting points: **Manager** ticks everything,
 **Cashier** ticks nothing, and **Stock keeper** ticks Receive stock, Correct
@@ -138,7 +146,34 @@ you with their pass key." and an "Ask an admin" button.
 The action is refused outright, with no dialog, when no admin on this device has
 a pass key set. Set one (section 6) before handing the till to staff.
 
+### Their own phone -- messages on a staff member's phone
+
+![Their own phone: Let the staff member read and answer Messages on their own phone, and Invite to use their phone](https://downloads.dolinesystems.com/manual/21-their-own-phone.png)
+
+At the foot of a saved staff member's form, "THEIR OWN PHONE" lets them read and
+answer the store's Messages on their own phone, signed in with their own Doline
+account: "They see what they'd see at a till here: no sales, stock or reports."
+It is not offered for admins, or for a staff member the cloud does not have yet
+(added offline and not synced).
+
+- **Invite to use their phone** -- shows "Invite <name>": a QR code and a code,
+  "Works once, for 48 hours.", and what they do on their phone -- "install Doline
+  Store, sign in with their own account, choose "I work at a store", then scan
+  this or type the code." (section 6).
+- **Unlink their phone** -- once linked. "Unlink <name>'s phone?" -- "Their phone
+  stops getting this store's messages at once, and deletes them when it next
+  connects."
+
+![Invite: the instructions, a QR code and the code (blurred here), and Works once, for 48 hours](https://downloads.dolinesystems.com/manual/21-staff-invite.png)
+
+Inviting is the owner's and needs a plan with messaging: otherwise it says "Only
+the owner can invite staff to use their phone." or "Messages need a paid plan for
+this store." Nothing on the form needs saving for the invite; closing it checks
+again whether the phone has joined.
+
 ### Activity `[Admin only]`
+
+![Activity: filters by time, person and kind, then entries such as Admin Reviewer unlocked the till](https://downloads.dolinesystems.com/manual/21-activity.png)
 
 Under Settings, in the Access group, next to Staff & Security. Hidden from
 non-admins.
@@ -161,7 +196,7 @@ be edited or cleared from the app.
 
 ### Your own pass key and profile `[Both]`
 
-These two are reached from the account menu on the dashboard, not from here, and
+These two are reached from your own menu at the foot of the drawer, not from here, and
 every staff member can use them on their own account. On a computer, click
 "Profile" at the foot of the sidebar, or your own name there: it opens your
 profile, with "Change pass key" under it.

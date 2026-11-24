@@ -8,6 +8,8 @@ both land here, in the same list. On a phone, pulling the list down syncs it (se
 
 ### The list
 
+![Orders: grouped by day, each card with the client, order number and time, its status and whether it is paid](https://downloads.dolinesystems.com/manual/15-orders.png)
+
 Orders are grouped by date with a heading per day, newest first, each row
 showing the order number, its progress as a coloured chip, and the time it was
 placed. Underneath, the amount and one of three things on the right:
@@ -41,15 +43,20 @@ match ..." when searching.
 
 ### An order's own screen
 
-Headed "Order - #000123". It lists the items with their quantities -- in the
+![A marketplace order: its status, Ask Lilli about the order, Items and Payment, and the Message the buyer button in the top bar](https://downloads.dolinesystems.com/manual/15-order-marketplace.png)
+
+Headed with the order number. It lists the items with their quantities -- in the
 order's own units, so a Unit-priced line reads in kilos and a Recurring one in
 months -- and anything already returned shown in red beside them. Each line is
 priced *as of the sale*, not as of today, so a later price change does not
 rewrite history.
 
-At the foot, "Order Amount:". On a credit order a second line follows: "Credit
-balance:" with the outstanding amount in red, or "Credit balance cleared" in
-green once it is settled.
+An **Ask Lilli about order #…** row near the top opens a chat with Lilli about
+this order, with suggestions such as "Is order #0003 paid?" (section 22).
+
+Under the items, the Payment part shows the order amount and what has been
+received. On a credit order a further line follows: "Credit balance" with the
+outstanding amount in red, or "Cleared" in green once it is settled.
 
 ### Marketplace orders
 
@@ -67,6 +74,16 @@ the buyer has paid nothing and nothing has been handed over yet.
   sales never carry it.
 
 A shipping order is finished with **Deliver order** once the customer has it.
+
+**Message the buyer.** A marketplace order has a chat icon, "Message the
+buyer", in the top bar. It opens this order's conversation with the buyer in
+the Inbox (section 25), made the first time it is opened. It shows for the owner
+and for staff with the "Message clients" permission (section 21), on a plan with
+messaging. When it cannot open the conversation it says why: "This order's
+messages were cleared a day after it was settled.", "This order has no
+DolineMarket buyer to message.", "Messaging isn't on this store's plan.", "You
+need the Message clients permission.", or "You're offline. Try again when this
+till is online."
 
 ### The order menu
 

@@ -185,6 +185,15 @@
   .manual blockquote {
     @apply rounded-sm border-l-4 border-primary bg-surface px-5 py-3;
   }
+  .manual-shot {
+    @apply my-2 flex w-full max-w-[280px] flex-col gap-2;
+  }
+  .manual-shot img {
+    @apply block h-auto w-full rounded-md border border-surface-variant bg-surface shadow-sm;
+  }
+  .manual-shot figcaption {
+    @apply text-[14px] leading-snug text-ink-2;
+  }
   .manual-table {
     @apply overflow-x-auto rounded-md bg-surface;
   }
