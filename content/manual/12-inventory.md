@@ -4,6 +4,8 @@ The Inventory tab: everything the shop stocks, one card per item, under
 "Inventory" in the top bar. On a phone, pulling the list down syncs it (see the
 overview).
 
+![Inventory: item cards with price per unit, stock, and Out of stock or how many are left](https://downloads.dolinesystems.com/manual/12-inventory.png)
+
 ### Prices live on batches, not on items
 
 This is the one idea to hold on to. An item is the thing you sell -- its name,

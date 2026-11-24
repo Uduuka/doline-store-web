@@ -1,7 +1,9 @@
 ## 2. Welcome Screen `[Both]`
 
 The first screen Doline shows on a device that has never been set up, and the
-way in to both signing in and creating an account.
+way in to both creating an account and logging in.
+
+![The Welcome screen: Doline Store, three things the app does, Get your store going, and the Get started and Log in buttons](https://downloads.dolinesystems.com/manual/02-welcome.png)
 
 ### When you see this screen
 
@@ -11,47 +13,42 @@ in exactly two situations -- a new or newly reinstalled device, and a device tha
 has been signed out.
 
 If you are looking at this screen on a till that was working yesterday, somebody
-has signed it out. The shop's data is safe in the cloud and comes back when you
-sign in again; what was lost is only this device's local copy.
+has signed it out -- on the till itself, or from another device under Settings >
+Active devices (section 24). The shop's records are safe in the cloud and come
+back when you sign in again; what was lost is only this device's local copy.
 
-### Get Started -- creating a new account
+### What is on it
 
-The Get Started button is the large blue button in the middle of the screen,
-and it is the main action. It opens the Register screen (section 3).
+The top half says what the app is and is not a control: the Doline logo,
+"Doline Store", the line "Sell, track stock and see how the day went, from one
+place.", and three short points -- Point of sale and orders, Inventory with
+batches and prices, and Reports, expenses and clients.
+
+Below it, "Get your store going" and the line "Create an account to set up a
+store, or log in to one you already run or work at." sit over the screen's two
+buttons. A copyright line, "© 2026 Doline POS", closes the screen and is not a
+control.
+
+### Get started -- creating a new account
+
+The large blue Get started button opens Create account (section 3).
 
 Use it only if the shop does not yet have a Doline account. The person who
-registers becomes the shop's admin, and everyone else on staff is added
-afterwards under that account by the admin. If your shop already uses Doline,
-registering again creates a second, empty, unrelated shop rather than joining
-you to the existing one -- use Login instead.
+creates the account owns the shop and becomes its admin; everyone else on staff
+is added afterwards by that admin. If your shop already uses Doline, creating
+another account makes a second, empty, unrelated shop rather than joining you to
+the existing one -- use Log in instead.
 
-### Login -- signing in to an account that already exists
+### Log in -- an account that already exists
 
-The Login link sits below the Get Started button, in the same blue. It opens
-the Login screen (section 4).
+The Log in button under it opens the Log in screen (section 4).
 
-This is the one to use when setting up an additional till for a shop that is
-already on Doline, or when returning to a device that has been signed out. Sign
-in as the shop's admin account: you are asked for the admin pass key straight
-afterwards, and then for which of the account's shops this device should hold.
+It is the one to use when setting up another till for a shop that is already on
+Doline, when returning to a device that has been signed out, and when a staff
+member is setting up their own phone to read the store's messages (section 6).
 
-### The brand block -- information only
+### Making sure it is the right app
 
-The top half of the screen is identification, not controls. Nothing in it is
-tappable, and nothing in it changes: "EST. 2026" in small spaced capitals,
-"DOLINE STORE" in the blue used for every primary action throughout the app,
-"STORE MANAGEMENT" set between two horizontal rules, and "POS, INVENTORY AND
-MORE" underneath.
-
-Its practical use is confirming you have opened the right app. Doline also
-publishes a separate marketplace app for buyers, and on a shop phone with both
-installed the two are easy to confuse. The till app is this one -- the one whose
-first screen says DOLINE STORE and offers Get Started and Login.
-
-### What this screen does not do
-
-There are no other controls on it. There is nothing to configure here and no
-settings reachable from it -- choosing the shop, the currency and the pass key
-all happen after signing in. There is no password reset link here either; that
-one lives on the Login screen, where someone who has just failed to remember a
-password is already looking.
+Doline also publishes a separate app for buyers, DolineMarket. On a shop phone
+with both installed they are easy to confuse. The till app is this one -- the one
+whose first screen says Doline Store and offers Get started and Log in.

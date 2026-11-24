@@ -1,14 +1,20 @@
 ## 8. Who's on shift `[Both]`
 
-The staff lock. Headed "Who's on shift?" with the line "Select your name to
+The staff lock. Headed "Who's on shift?" with the line "Pick your name to
 unlock this device", this is the screen a provisioned till opens on and returns
 to all day.
+
+![Who's on shift?: the staff list, each name with its role](https://downloads.dolinesystems.com/manual/08-whos-on-shift.png)
 
 It exists because the counter device is shared. Doline wants a name against
 every sale, so the day's figures can be read per staff member and so a dispute
 has an answer. Unlocking is the nearest thing the app has to clocking in.
 
 ### Unlocking
+
+![Unlocking a till: tap your name, type your six-digit pass key, and the dashboard opens](https://downloads.dolinesystems.com/manual/08-unlock.gif)
+
+![Entering a pass key after picking a name: the six-digit field, Unlock, and Not you? Choose again](https://downloads.dolinesystems.com/manual/08-pass-key.png)
 
 Tap your own name in the list. The pass key field appears with the keyboard
 already up, and typing the sixth digit submits it -- there is nothing to press.
@@ -23,9 +29,9 @@ typed, so a half-entered pass key cannot sit waiting for the next person.
 ### Your first time on a device
 
 A staff member who has never unlocked *this* device, and has no pass key yet,
-gets a different form: "First time on this device -- set a pass key to unlock it
-going forward." with Pass key and Confirm pass key fields, and a Set pass key
-button. Setup needs the button; only an existing pass key submits itself on the
+gets a different form: "First time on this device: set a pass key to unlock it
+from now on." with "Choose a pass key" and "Type it again" fields, and a Set pass
+key button. Setup needs the button; only an existing pass key submits itself on the
 last digit.
 
 What you set here is yours from then on, on this device and on any other till in
@@ -65,9 +71,9 @@ untouched that long, and the clock restarts on any touch anywhere in the app. A
 till in use then never locks and a till put down always does, so the next person
 to pick it up enters their own pass key rather than inheriting your shift.
 
-Either way, lock it deliberately when you step away -- Lock in the account menu
-at the top right of the dashboard, or the Lock button at the foot of the sidebar
-on a computer. On a shared counter, do that rather than relying on a timer.
+Either way, lock it deliberately when you step away -- open the menu, tap your
+own name at the foot of it and choose "Lock the till" (section 9), or press the
+Lock button at the foot of the sidebar on a computer. On a shared counter, do that rather than relying on a timer.
 
 Closing the app entirely has the same effect. The shift is held in memory only,
 so reopening Doline always comes back to this screen -- but it comes back to the

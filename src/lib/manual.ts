@@ -8,7 +8,9 @@ import { Marked, type Tokens } from "marked";
  * Lilli answers from — so keep the two in step: copy them over when the app's manual changes.
  *
  * Each file opens with `## N. Title `[Access]``; `###` headings are its parts, and other
- * chapters are referred to as "section N", which become links here.
+ * chapters are referred to as "section N", which become links here. Screenshots are image lines
+ * on their own (`![what it shows](https://downloads.dolinesystems.com/manual/…)`); each becomes a
+ * figure, its description shown as the caption.
  */
 const DIR = path.join(process.cwd(), "content", "manual");
 
@@ -31,6 +33,7 @@ export const GROUPS: { title: string; from: number; to: number }[] = [
   { title: "Stock", from: 12, to: 14 },
   { title: "Orders and people", from: 15, to: 18 },
   { title: "Running the shop", from: 19, to: 24 },
+  { title: "Messages", from: 25, to: 25 },
 ];
 
 const ACCESS: Record<string, Access> = { Both: "Everyone", "Admin only": "Admins only", Mixed: "Partly admin" };
@@ -41,6 +44,9 @@ const slugify = (s: string) =>
     .replace(/['’]/g, "")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
+
+const escapeHtml = (s: string) =>
+  s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 /** The manual's double hyphens are dashes. */
 const dashes = (md: string) => md.replace(/(\s)--(?=\s)/g, "$1—");
@@ -82,14 +88,33 @@ function render(body: string, slugs: Map<number, string>): string {
         const rows = token.rows.map((r) => `<tr>${r.map((c) => cell(c, "td")).join("")}</tr>`).join("");
         return `<div class="manual-table"><table><thead>${head}</thead><tbody>${rows}</tbody></table></div>\n`;
       },
+      image({ href, text }: Tokens.Image) {
+        return `<img src="${escapeHtml(href)}" alt="${escapeHtml(text)}" loading="lazy" decoding="async">`;
+      },
+      paragraph({ tokens }: Tokens.Paragraph) {
+        // A screenshot on its own line is a figure, captioned with what it shows.
+        const only = tokens.filter((t) => !(t.type === "text" && !t.raw.trim()));
+        if (only.length === 1 && only[0]!.type === "image") {
+          const img = only[0] as Tokens.Image;
+          return `<figure class="manual-shot">${this.parser.parseInline([img])}<figcaption aria-hidden="true">${escapeHtml(img.text)}</figcaption></figure>\n`;
+        }
+        return `<p>${this.parser.parseInline(tokens)}</p>\n`;
+      },
     },
   });
   const html = marked.parse(body, { async: false });
-  // "section 14" → a link to that chapter. Text only: the manual has no links or attributes of its own to trip on.
-  return html.replace(/\b([Ss]ections?) (\d{1,2})\b/g, (all, word: string, n: string) => {
-    const slug = slugs.get(Number(n));
-    return slug ? `<a href="/docs/${slug}">${word} ${n}</a>` : all;
-  });
+  // "section 14" → a link to that chapter, in text only: tags (an image's alt, say) are left alone.
+  return html
+    .split(/(<[^>]*>)/)
+    .map((part) =>
+      part.startsWith("<")
+        ? part
+        : part.replace(/\b([Ss]ections?) (\d{1,2})\b/g, (all, word: string, n: string) => {
+            const slug = slugs.get(Number(n));
+            return slug ? `<a href="/docs/${slug}">${word} ${n}</a>` : all;
+          }),
+    )
+    .join("");
 }
 
 let cache: Chapter[] | null = null;

@@ -1,24 +1,28 @@
 ## 10. POS `[Both]`
 
-The till. Headed "Point Of Sale", this is where sales happen: find an item, say
-how much of it, add it to the cart. Taking the payment is the next section.
+The till. The POS tab, headed "New Sale", is where sales happen: find an item,
+say how much of it, add it to the cart. Taking the payment is the next section.
+
+![New Sale: the item grid, each card with its name, price, unit and stock](https://downloads.dolinesystems.com/manual/10-pos.png)
+
+![A sale from tapping an item to the cart: pick the unit, Add to cart, open the cart](https://downloads.dolinesystems.com/manual/11-sale.gif)
 
 ### Finding an item
 
-Three controls sit in a row above the item grid.
+Three controls sit in the top bar, beside "New Sale".
 
-- **Search** -- the field in the middle, "Search stock items". It matches on
-  barcode, item name, description and category at once, so a partial name or a
-  category word both work.
-- **Scanner** -- the button on the right opens the camera to read a barcode. The
-  first use asks for camera permission; if it was refused, grant it in the
-  device's own app settings. A code it cannot place shows a "Scan error!"
-  dialog.
-- **Filters** -- the button on the left. It opens a sheet with two filters, and
-  shows a count beside it while any is on.
+- **Search items** -- opens "Search or scan an item". It matches on barcode,
+  item name, description and category at once, so a partial name or a category
+  word both work. The scanner is in the same place: it opens the camera to read a
+  barcode. The first use asks for camera permission; if it was refused, grant it
+  in the device's own app settings. A code it cannot place shows "Scan error!" --
+  "No stock item matched UPC: …".
+- **Filters** -- opens a sheet with two filters, and shows a count while any is
+  on.
+- **Cart** -- the cart icon, with a badge counting the lines in it.
 
-The filter sheet offers **In stock only**, which hides items with nothing left
-to sell, and a **Category** chip per category actually present in this shop's
+The filter sheet offers **In stock only** ("Hide items with nothing left to
+sell") and a **Category** chip per category actually present in this shop's
 stock -- so it never offers one that would leave you with an empty grid. "Clear
 all" resets both.
 
@@ -28,17 +32,18 @@ is all there is, deliberately: search already finds a known item fast, and these
 cover the two things search cannot express -- browsing one shelf, and getting
 dead lines out of the way during a rush.
 
-Below the row is the item grid -- one card per item, with its name and price. An
-item with nothing available shows "Out of stock" in red on its card. When the
-grid has nothing to show it says "No items in inventory yet.", or "No items
-match ..." when a search is in play.
+Below is the item grid -- one card per item, with its name, price, the unit
+that price is for and how much is in stock. An item with nothing available shows
+"Out of stock" on its card. With nothing to show, the grid says "Nothing to sell
+yet -- Add items in Inventory and restock them to sell them here.", or, for a
+search, "No results for "…" -- Check the spelling, or scan the barcode."
 
 ### Getting to the cart
 
 On a phone there are two ways, and both open the same thing: the cart icon in
-the top bar, which carries a badge counting the lines in the cart, and the
-floating blue "Total Amount:" button near the bottom, which shows the running
-total. On a tablet the cart is a permanent side pane instead and both of those
+the top bar, and the bar along the bottom that appears once something is in the
+cart -- it reads like "1 item · Walk-in client · UGX 1,200", with the client's
+name in place of Walk-in client once one is attached. On a tablet the cart is a permanent side pane instead and both of those
 disappear -- nothing is missing, it is just always visible.
 
 ### Adding an item to the cart

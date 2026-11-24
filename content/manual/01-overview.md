@@ -27,11 +27,14 @@ every time, and you never see the earlier screens again unless the device is
 signed out or reinstalled. Each step has its own section later in this manual.
 
 1. **Welcome** -- the first screen on a device that has not been set up. Get
-   Started creates a new account; Login signs in to one that exists.
-2. **Register or sign in** -- with an email address and password, or a Google
-   account. Whoever registers becomes the shop's admin.
-3. **The admin pass key** -- a six digit key. The first device sets it; every
-   later device asks for it before it will go any further.
+   started creates a new account; Log in signs in to one that exists.
+2. **Create an account or log in** -- with an email address and a six-digit code
+   emailed to it (there is no password), or a Google account. Whoever creates
+   the account becomes the shop's admin.
+3. **How you will use it, and the admin pass key** -- "This is my business" for a
+   till, then a six digit key: the first device sets it; every later device asks
+   for it before it will go any further. ("I work at a store" is for a staff
+   member putting the store's messages on their own phone instead; section 6.)
 4. **Choose the shops for this device** -- pick from the account's shops, or
    create the first one. Their settings, including the currency they price in,
    come down with them.
@@ -64,27 +67,29 @@ are always one tap away from wherever you are.
 - **Lilli** -- the in-app assistant. Ask it about your own figures, or how to do
   something in the app.
 
-On the Store tab, the menu button opens a drawer with the rest of the app --
-nine destinations, in this order:
+On the Store tab, the menu button opens a drawer with the rest of the app, in
+this order:
 
 - **Dashboard** -- back to the Store tab itself.
+- **Inbox** -- the store's messages: the team chat, direct messages and
+  DolineMarket buyers (section 25).
+- **Notifications** -- stock alerts, marketplace orders and notices, with how
+  many are unread.
 - **Reports** -- sales, profit, stock health and restocking.
 - **Expenses** -- what the shop has spent, recorded against the day.
-- **Notes** -- notes kept with the shop rather than on someone's phone.
-- **Clients** -- customers, their details and their orders.
+- **Clients** -- customers, their details, their orders and what they owe.
 - **Suppliers** -- who you buy from.
-- **Settings** -- how this shop is configured, and the account's plan, devices
-  and backups. Open to admins and to staff allowed to change store settings; five
-  of its screens are admin-only.
-- **Help and feedback** -- this manual inside the app, the FAQs, and a form for
-  telling us what is wrong.
-- **Lilli** -- the same assistant as the bottom tab.
+- **Notes** -- notes kept with the shop rather than on someone's phone.
+- **Settings** -- how this shop is configured, the account's plan, devices and
+  backups, and this device's messages. Open to admins and to staff allowed to
+  change store settings; five of its screens are admin-only.
+- **Help and feedback** -- the FAQs, support, and a form for telling us what is
+  wrong.
 
-The account icon at the top right of the dashboard holds your notifications --
-a red dot on it means some are unread -- and the three things that are about
-you rather than about the shop: Edit profile, Lock -- which returns the device
-to the staff lock -- and Change pass key, which asks for your current pass key
-once and the new one twice.
+At the foot of the drawer is the person on shift. Tapping their name opens what
+is about you rather than the shop: Edit profile, Change pass key, Switch store
+(admins), **Lock the till** -- which returns the device to the staff lock -- and
+Sign out (section 9).
 
 ### Admins and staff
 
@@ -98,12 +103,14 @@ do.
 - **By permission:** selling on credit, returns and cancellations, editing
   orders, receiving stock, correcting batches, writing off stock, settling stock
   counts, adding and editing items, prices and promotions, marketplace listings,
-  suppliers, Reports, seeing costs and profit, and Settings.
+  suppliers, Reports, seeing costs and profit, Settings, and messaging
+  DolineMarket buyers.
 - **Admin only:** the Store Details, Staff & Security, Activity, Plan and Active
   devices screens under Settings -- so adding and editing staff, their
-  permissions and admin access, publishing the store on DolineMarket and signing
-  other devices out -- deleting items, adding a shop to the account and reaching
-  the shop list at all.
+  permissions and admin access, inviting staff to use their own phones,
+  publishing the store on DolineMarket, paying for a plan and signing other
+  devices out -- deleting items, adding a shop to the account and reaching the
+  shop list at all.
 
 When someone tries something they are not allowed to, the app asks for an
 admin's pass key there and then, for that one action ("Admin approval needed";
@@ -131,6 +138,10 @@ together. In practice it earns its place in four ways.
   the same orders, once both have had a connection.
 - **Online orders arrive.** Orders placed through the Doline marketplace come
   down into the same Orders tab as the ones rung up at the counter.
+- **Messages travel.** The team chat, direct messages and buyers' messages reach
+  every till and staff phone through the cloud, which keeps them for 30 days
+  (section 25). The devices keep them for good, and Google Drive backup can keep
+  your own copy (section 20).
 - **Your shop front is published.** Once the store is on DolineMarket (section
   24), what the shop takes in payment, whether it delivers and the currencies it
   prices in are shown to buyers before they order.
@@ -148,8 +159,9 @@ this way), or press "Sync now" on desktop.
 Every account is on a plan -- Free, Duka, Business or Enterprise -- which sets how
 many items, staff, devices and stores it can have, whether it sells on
 DolineMarket, how often it backs up and how many questions Lilli answers a month.
-Settings > Plan shows yours and how much of it you are using. Section 24 has the
-details, including what happens when a limit is reached.
+Settings > Plan shows yours and how much of it you are using, and Choose a plan
+pays for one by MTN MoMo or Airtel Money. Section 24 has the details, including
+what happens when a limit is reached.
 
 ### How to read the rest
 

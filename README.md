@@ -41,7 +41,9 @@ cp ../Doline/docs/lilli/manual/[0-9]*.md content/manual/
 ```
 
 Each file must open with `## N. Title `[Both|Admin only|Mixed]``; "section N" in the text becomes a
-link to that chapter.
+link to that chapter. A screenshot on a line of its own becomes a captioned figure; the images live in
+R2 at `https://downloads.dolinesystems.com/manual/`, not in either repo. A new chapter number needs
+a place in `GROUPS` (`src/lib/manual.ts`) to show in the contents.
 
 **The app is free.** The site says so wherever it asks people to download: the Free plan costs
 nothing, and only the paid services listed under Pricing are charged for.

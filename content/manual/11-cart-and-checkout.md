@@ -3,9 +3,12 @@
 Where a cart becomes an order. It opens as a panel over the POS screen on a
 phone, and sits permanently beside it on a tablet.
 
-The header reads "Shopping cart" until you attach a client, at which point it
-becomes that client's name -- which is the quickest check that you have the right
-person on a credit sale.
+![The cart: one line with its quantity buttons, the Total, Amount received, Change, Save as draft and Complete sale](https://downloads.dolinesystems.com/manual/11-cart.png)
+
+The header reads "Cart", with how many lines it holds ("1 line"), until you
+attach a client, at which point it shows that client's name -- the quickest check
+that you have the right person on a credit sale. With nothing in it, it says
+"Cart is empty".
 
 ### The lines
 
@@ -14,6 +17,8 @@ with minus and plus buttons. The bin icon on a line removes it, after a "Delete
 Item?" confirmation naming the item.
 
 ### Cart Actions
+
+![Cart Actions: Add Client and Clear cart](https://downloads.dolinesystems.com/manual/11-cart-actions.png)
 
 The menu button in the cart's own header opens Cart Actions:
 
@@ -26,9 +31,8 @@ The menu button in the cart's own header opens Cart Actions:
 - **Clear cart** -- empties it, after a "Clear cart?" confirmation that warns
   the action cannot be undone.
 
-When the shop has no clients on file yet, the picker shows a message that reads
-"Now saved clients!" -- a typo for "No saved clients". It means the list is
-empty, nothing more.
+When the shop has no clients on file yet, the picker says "No saved clients
+yet."
 
 ### Taking the payment
 
@@ -53,7 +57,7 @@ Two buttons finish the sale:
   no stock moves, no money is recorded, and the order is not sent to the cloud,
   because there is nothing to report yet. Use it for an order being assembled,
   or a customer who has gone to fetch cash.
-- **Complete Sale** -- rings the sale up. Stock is taken from the batches the
+- **Complete sale** -- rings the sale up. Stock is taken from the batches the
   lines came from, the order is written, and it is queued for the cloud.
 
 ### The questions it asks
@@ -63,11 +67,11 @@ Each is a genuine fork, so read which one you got.
 
 - "Are you sure you want to save this order as a draft?" -- from Save as draft.
   Save or Cancel.
-- "Was this order paid or offered at credit?" -- from Complete Sale with the
+- "Was this order paid or offered at credit?" -- from Complete sale with the
   Amount received box left empty. Paid records it as settled in full; Credit
   records the whole amount as owed.
 - "The amount received is less than the order amount. Do you want to offer the
-  balance as a credit?" -- from Complete Sale with a short payment. Yes records
+  balance as a credit?" -- from Complete sale with a short payment. Yes records
   the shortfall as credit; No cancels so you can correct the amount.
 - "The cart is empty." -- nothing to sell.
 - "... belongs to another store. Take it out of the cart to finish this sale."
@@ -86,10 +90,9 @@ payments against the order (section 15). All of it depends on a client being
 attached -- **a credit sale to a walk-in customer leaves a balance with nobody's
 name on it.** Attach the client before you complete the sale, not after.
 
-Note that the balance lives on the *order*, not on the client. The client's own
-screen lists their orders but does not total up what they owe you across them,
-so chasing a debt means filtering Orders by Credit rather than opening the
-client.
+The balance lives on the *order*, and the client's screen adds those balances
+up: Clients shows what each client owes, and a client's own screen shows "Owes"
+with how many orders are on credit (section 16).
 
 The "is this fully paid?" test is made against the price actually charged, not
 the list price, so a discounted line does not make the app think a correct
