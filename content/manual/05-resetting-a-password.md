@@ -1,51 +1,42 @@
-## 5. Resetting a password `[Both]`
+## 5. The sign-in code `[Both]`
 
-Two screens, reached from "Forgot password?" on the Login screen: one asks where
-to send a link, the other sets the new password once that link is opened.
+Doline accounts have no password. Each time an account signs in on a device --
+from Log in (section 4) or Create account (section 3) -- Doline emails a
+six-digit code to the account's address, and this screen asks for it.
 
-This is for the *account* password -- the one that signs a device in. Staff pass
-keys are a different thing entirely and are reset by an admin from Settings,
-with no email involved.
+### Entering the code
 
-### Asking for a link
+The screen says "We sent a 6-digit code to <your address>." with **Change
+email** under it. Type the six digits from the email into the Code field, then
+press **Log in** -- or **Verify** when you are creating an account. The keyboard's
+Done key does the same.
 
-The first screen is headed "Reset password". It takes one field, Email address,
-and the Send reset link button sends it. "Remembered it? Login" goes back
-without sending anything, and so does the back arrow in the top bar.
+- **Resend code** -- unavailable for a minute after a code is sent, with the wait
+  counting down as "Resend code in 0:45". Once it reads "Resend code", tapping it
+  sends a fresh one ("Sending a new code…"). Only the newest code works.
+- **Change email** -- goes back to the email field, for an address typed wrong.
+  The system back button does the same.
+- **Try again** -- replaces the button if the code was accepted but the step
+  after it failed, usually for want of a connection.
 
-Once it has sent, the screen changes to "Check your email" and tells you that
-*if* an account exists for that address, a link is on its way. It will not tell
-you whether one actually does. That is deliberate: otherwise anyone who picked
-up the shop's phone could use this screen to work out which email addresses have
-Doline accounts. The address is named back to you, though, so a typo is still
-obvious.
+### If the code does not work
 
-"Didn't arrive? Send again" resends. "Back to login" returns to the Login
-screen, which is where you end up anyway if you give up.
+- "That code is wrong or has expired. Check it, or send a new one." -- a typo,
+  an old email, or a code that has been replaced by a newer one. Use the newest
+  email.
+- "Too many codes sent. Wait a minute, then try again."
+- "No connection. Check your internet and try again." -- the code is checked
+  online.
 
-### Setting the new password
+If no email arrives, look in the spam or promotions folder first, then check the
+address shown on the screen for a typo, and use Change email if it is wrong.
 
-Opening the link from your email brings you back into Doline on a screen headed
-"New password": a New password field and a Confirm new password field, with an
-eye icon on each to show what you typed. Six characters is the minimum, the same
-as at registration.
+### No password to forget
 
-It asks for nothing else. There is no current-password field, because the whole
-premise is that you do not have it. Saving signs you in and the app carries
-straight on into setup or into your shop, exactly as a normal login would -- you
-do not have to go back and type the password you just set.
+Because there is no password, there is no password to reset: whoever can open
+the account's inbox can sign in. Keep that inbox to yourself.
 
-### Open the link on the same device, within the hour
-
-The device remembers that it made the request, and that memory is what turns the
-link into a new-password prompt. On any other device the same link simply signs
-you in and leaves the password as forgotten as it was. After an hour it stops
-working altogether, and you will be told "That reset link has expired. Please
-request a new one."
-
-Neither is a real problem: ask for a new link from the device you are actually
-holding. But it does mean this is not a flow to start on the shop phone and
-finish on your own.
-
-All of this needs a connection, on both legs -- sending the email and setting the
-password. It is not a way out of a lost password on a day the internet is down.
+This is not the same as a **pass key**. Pass keys are the six-digit keys staff
+use to unlock the till (section 8). An admin who forgets theirs uses "Forgot pass
+key?", which also works by an emailed code (section 6); a staff member's is reset
+by an admin (section 21).

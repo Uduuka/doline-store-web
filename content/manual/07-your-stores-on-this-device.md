@@ -6,14 +6,19 @@ switch between them.
 
 ### Choose your stores -- the picker
 
+![Choose your stores: the account's stores, one selected, and the Install 1 store button](https://downloads.dolinesystems.com/manual/07-choose-stores.png)
+
 Headed "Choose your stores", with the line "Only the stores you pick are kept on
 this device. You can add or remove them later." It lists every shop the account
 owns; tap to select as many as belong on this device.
 
 The button at the bottom tells you where you are. Until you have picked
 something it reads "Select at least one store"; once you have, it counts them --
-"Install 1 store", "Install 3 stores". Pressing it downloads those shops and
-their settings and opens the stores list.
+"Install 1 store", "Install 3 stores". Pressing it opens "Installing your
+stores" -- "This happens once. Keep the app open until it is done so everything
+works offline afterwards." -- which fetches each shop in turn and then opens the
+stores list. If it stops part-way it says "Couldn't finish installing those
+stores." with Try again.
 
 Pick only what the device needs. Most tills want exactly one. A shop you install
 brings its whole catalogue, order history and client list down onto the device,
@@ -27,15 +32,15 @@ started." and offers a Create a store button instead.
 ### Create a new store -- the form
 
 Headed "Create a new store", with a back arrow. Top of the screen is STORE FRONT
-IMAGE -- tap "Add a store cover Image" to choose a cover photo from the device.
-Then:
+IMAGE -- tap "Add a cover image" to choose a cover photo from the device. Then:
 
-- **CATEGORY** -- what kind of shop it is, chosen from a list.
-- **NAME** -- the shop's name, as it appears at the top of the dashboard. For
+- **Category** -- what kind of shop it is, chosen from a list.
+- **Name** -- the shop's name, as it appears at the top of the dashboard. For
   example, "Doline Electronics store".
-- **SLUG** -- a short tagline for the shop, for example "Quality Electronics".
-- **DESCRIPTION** -- what the shop sells, in a sentence or two.
-- **ADDRESS** -- where it is, for example "Plot 18 Nahayima Road, Busia(U)".
+- **Slug** -- a short tagline for the shop, for example "Quality Electronics".
+- **Description** -- what the shop sells, in a sentence or two.
+- **Address** -- where it is, for example "Plot 18 Nahayima Road, Busia(U)".
+- **Currency** -- what the shop prices in.
 
 The Save button creates it and opens it. An incomplete form is refused with
 "Fill out all required fields".
@@ -46,14 +51,18 @@ reaches this form is told "Only the account admin can add a store."
 
 ### The stores list -- switching between shops
 
-Headed "DolineStore", showing a card for each shop installed on the device. Tap
-a card to open that shop; the + button in the top bar opens the create form.
+![Your stores: a card for the Demo store and the Add a store button](https://downloads.dolinesystems.com/manual/07-your-stores.png)
+
+Headed "Your stores", showing a card for each shop installed on the device, with
+its name, what it sells and where it is. Tap a card to open that shop; the round
+"Add a store" button at the bottom right opens the create form. An account with
+none shows "No stores yet" and a Create a store button.
 Only shops belonging to the signed-in account appear, even if the device has
 seen another account in the past.
 
 This is the app's home screen once you are signed in, which has one consequence
 worth knowing: pressing back here closes Doline rather than returning to the
-login screen behind it.
+Log in screen behind it.
 
 You will not pass through it most days. A relaunch goes straight to the lock
 screen of whichever shop the device was last used for, skipping this list -- and

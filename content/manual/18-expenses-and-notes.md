@@ -5,6 +5,8 @@ Notes keeps writing with the shop rather than on somebody's phone.
 
 ### Expenses
 
+![Expenses: today's date, Spent, Daily budget and Remaining](https://downloads.dolinesystems.com/manual/18-expenses.png)
+
 Headed "Expenses", with a calendar icon in the top bar to pick a date and a +
 button to add one. Each entry shows its category, its amount and its
 description. Empty, it reads "No expenses recorded yet". On a phone, pulling the list down syncs it (see the overview).
@@ -44,6 +46,8 @@ revenue or profit figures in Reports, which are built from sales and stock cost
 alone. Treat the two as separate books.
 
 ### Notes
+
+![Notes: each note with its title, first line and when it was written](https://downloads.dolinesystems.com/manual/18-notes.png)
 
 Headed "Notes", a list of cards each showing a note's title, its body and when
 it was written, with a search field -- "Search for notes..." -- above. Empty, it

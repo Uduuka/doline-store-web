@@ -6,6 +6,8 @@ that corrects a batch.
 
 ### The item screen
 
+![An item: Price, Available, Batches and Pricing, the Ask Lilli row, and Batches and stock](https://downloads.dolinesystems.com/manual/13-item.png)
+
 The item's name is in the top bar, with a back arrow and a menu. Under it, four
 figures: **Price** (what it sells at now, and per what), **Available** (what is
 left, "of" what was stocked), **Batches** (how many, and when the latest
@@ -13,6 +15,9 @@ arrived) and **Pricing** (its pricing scheme, set per batch).
 
 Then:
 
+- **Ask Lilli about <item>** -- a row that opens a new chat with Lilli about this
+  item, with suggested questions such as "How fast is it selling?" and "When
+  should I restock it?" (section 22).
 - **Batches and stock** -- a row per batch with what arrived and what is left.
   Tapping a row opens that batch. "Restock" beside the heading adds a new one
   (section 14).
@@ -22,7 +27,13 @@ Then:
 - **Recent sales** -- the last three sales of this item, each as "Order #..."
   with how many were sold (and how many came back). Under each, every batch it
   drew from: "Batch ... · took 3 cartons · 12 → 9", what the batch held just
-  before the sale and just after.
+  before the sale and just after. Tapping a sale opens that order.
+- **View all** -- beside the Recent sales heading. Opens the item's whole sales
+  history: total sales and stock sold at the top, then every sale since the
+  first one, grouped by month ("NOVEMBER 2026 · 4 SALES"), with the stock sold
+  in the item's own units.
+
+![The full sales history: Sales and Stock sold at the top, then every sale grouped by month](https://downloads.dolinesystems.com/manual/13-sales-history.png)
 
 ### Reading Recent sales when stock doesn't add up
 
@@ -40,6 +51,8 @@ either had synced, or a sale made with "sell anyway". It is recorded as it
 happened rather than refused, and a stock count (section 12) settles it.
 
 ### The item menu
+
+![The item menu: Restock, Promotions, Listing, Write off, Stock count, Edit item and Delete item](https://downloads.dolinesystems.com/manual/13-item-actions.png)
 
 The menu in the top bar:
 

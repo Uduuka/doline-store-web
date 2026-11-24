@@ -34,19 +34,22 @@ Free unless a plan is chosen. A paid plan whose payment is late keeps working fo
 anything over the new plan's limit can still be sold and edited; you just can't
 add more until you're under the limit or upgrade.
 
-Paid plans can't be bought inside the app yet. To move to one, contact Doline
-(section 23) and it is set up for you; the app picks it up on its next sync.
+A plan is bought inside the app, by MTN MoMo or Airtel Money: see "Choosing and
+paying for a plan" below. The app picks the new plan up as soon as it is paid.
 
 ### Plan `[Admin only]`
+
+![Plan: Enterprise, Active, paid up to a date, the price, Pay for more time, and What you're using](https://downloads.dolinesystems.com/manual/24-plan.png)
 
 Headed "Plan". At the top, the plan's name ("Business trial", "Duka", "Free")
 and one line on where it stands -- when a trial ends, when a paid plan renews,
 or that a late payment is in its grace period -- then what the plan costs ("Duka
 is UGX 15,000 a month, or UGX 150,000 a year."; nothing for Free). The button
-under it reads "Upgrade to ...", "Choose a plan" or "Renew ...", with what the
-next plan costs beneath it, and for now explains that paid plans can't be bought
-in the app yet. When a limit is reached, the message that says so also names the
-next plan up and what it costs.
+under it reads "Upgrade to ...", "Choose a plan", "Renew ..." or, on the top
+plan, "Pay for more time"; a paid plan below the top also has "Pay for more time"
+under its upgrade button. What the next plan costs is beneath them. Each opens
+Choose a plan (below). When a limit is reached, the message that says so also
+names the next plan up and what it costs.
 
 - **What you're using** -- one bar per limit: items on sale, staff, stores,
   devices, DolineMarket listings, suppliers and Lilli messages this month, each
@@ -59,6 +62,50 @@ next plan up and what it costs.
   history.
 - **Check my plan again** -- asks the cloud now, for after a plan has been
   changed. The line under the bars says when it was last checked.
+- **Payments** -- once the account has paid for a plan, each payment: the plan
+  and period with the amount ("Enterprise, a month · UGX 120,000"), the network
+  and date, and **Paid**, **Failed** (with why) or **Waiting**.
+
+### Choosing and paying for a plan `[Admin only]`
+
+![Choose a plan: picking Business, Yearly, MTN MoMo and the number, and the total updating, stopping before Pay](https://downloads.dolinesystems.com/manual/24-choose-plan.gif)
+
+![Choose a plan: Duka, Business and Enterprise with their prices and limits, then Pay, Extra stores, Mobile money and Number to charge](https://downloads.dolinesystems.com/manual/24-choose-plan.png)
+
+Headed "Choose a plan", from any of the Plan screen's buttons:
+
+- **Plan** -- Duka, Business or Enterprise, each with its monthly price and what
+  it includes; yours says "(your plan)".
+- **Pay** -- Monthly, or "Yearly · 2 months free" (a year costs ten months).
+- **Extra stores** -- Enterprise only: five stores are included, and the - and +
+  buttons add more at the monthly price shown.
+- **Mobile money** -- MTN MoMo or Airtel Money, and **Number to charge**. The
+  number decides the network: "That's an Airtel Money number." if it does not
+  match the one picked, "Enter the whole number, like 0772 123 456." for one too
+  short.
+- **Total** -- the amount, and when it starts: "Starts as soon as it's paid.",
+  or "Added to the end of your current plan." when paying for more of the same
+  plan.
+
+**Pay UGX …** sends a payment prompt to that phone. The screen then reads
+"Approve on your phone": the network has sent a prompt to the number, and you
+enter the mobile money PIN *on that phone*. Once it is approved, "Paid" says
+which plan you are on and until when; Done closes it. "Still waiting for the
+phone…" with **Check again** appears after a couple of minutes. **Leave it
+waiting** closes the screen -- "the payment still goes through once it's
+approved, and your plan changes then."
+
+When it does not go through, it says why and nothing is charged: "The payment
+was declined on the phone.", "There wasn't enough money on that line. Top up,
+then try again.", "The prompt ran out before it was approved.", "That number isn't
+registered for mobile money." or "A payment is already waiting on a phone.
+Approve or decline it there first, then try again in a few minutes."
+
+Until mobile money payments are open to every shop, the screen says "Paying by
+mobile money opens soon. We'll let you know when you can upgrade here." and Pay
+stays unavailable; contact Doline (section 23) to move to a plan meanwhile. A
+note reading "Test mode: no money moves." appears only on Doline's own test
+accounts.
 
 Before plans start, the screen already shows each shop's plan, but nothing is
 limited: every shop works as it always has until the launch date, which shops
@@ -103,11 +150,36 @@ shows one of these instead of the app:
 - **"This device was signed out"** -- someone signed it out from another device.
   It sends anything it hasn't backed up first, then signs out.
 
-Each lists the account's devices with **Sign out** beside the others, **Check
-again**, and a way to sign out of this device instead. A device not seen for 60
+On the limit, the admin chooses one device to keep -- this one or another -- and
+presses "Keep this device, sign out the others" (or "Keep <name>, sign out the
+rest"): "The others upload what they have and sign themselves out. Nothing on
+them is lost." **Move to a bigger plan** opens Choose a plan right there; once it
+is paid, the device carries on under the new limit. A device not seen for 60
 days stops counting on its own, so a lost phone frees its place.
 
+A device that has been signed out this way uploads first, showing "Uploading N
+changes. This device signs out by itself once they're all in the cloud; without
+internet it waits.", then "Everything is in the cloud. Signing out…". It never
+signs out with changes still on it. Only changes the cloud keeps refusing can be
+thrown away, with "Sign out and discard them" -- "They never reached the cloud
+and will be gone for good. Only do this if the account admin agrees."
+
+### Signed out but still set up
+
+Sometimes a device's sign-in lapses while it is still set up as a till -- for
+example the account's sign-in was ended elsewhere. It does not stop selling. A
+banner across the store screens says **Signed out: not syncing**: "This device
+has been signed out of its Doline account, so nothing made here is reaching
+the cloud." -- "Sales are kept here. Ask the account admin to sign in again before
+<time>." After a day it stops taking sales until someone signs in.
+
+**Sign this device in again** asks for the account admin's email and the code
+sent to it. "Nothing on this device is erased by signing in again": everything
+made meanwhile then syncs.
+
 ### Active devices `[Admin only]`
+
+![Active devices: how many are signed in, each device with when it was seen, its version and backup state, and Sign out](https://downloads.dolinesystems.com/manual/24-active-devices.png)
 
 Headed "Active devices": how many are signed in and how many the plan allows,
 then each phone and computer on the account --
@@ -127,6 +199,8 @@ up for days is a till whose sales exist nowhere else.
 
 ### Backup & sync
 
+![Backup & sync: Backs up continuously, Last full backup, Back up now, and Not backed up yet](https://downloads.dolinesystems.com/manual/24-backup-and-sync.png)
+
 Headed "Backup & sync". At the top, how this device backs up:
 
 - **Backs up continuously** (paid plans) -- every change goes to the cloud moments
@@ -145,13 +219,22 @@ device never loses its day by being signed out.
 
 **Not backed up yet** lists every change on this device that has not reached
 the cloud, by kind -- "3 sales and orders", "1 item" -- with the oldest one's
-time. Two warnings can appear under a kind:
+time.
 
-- "N stopped trying after repeated failures. Back up now tries them again." --
-  the cloud refused them several times. Back up now gives them another go; if
-  they still fail, the "Last problem" line underneath is the thing to report.
-- "Last problem: ..." -- the cloud's own reason, worth quoting in feedback
-  (section 23).
+A change the cloud would not take is listed on its own under **Couldn't sync**,
+named so you can recognise it -- "Sale #0344" with its total and time, "Payment of
+UGX 20,000", an item or a batch -- with the problem in plain words: "Doline
+refused this change.", "Doline couldn't save this change." or "It's waiting for
+something it depends on to reach the cloud first." Then:
+
+- **Show details** -- the sale's items, total, payment, customer and time (or the
+  note, expense or batch), and "Show the cloud's reply" for the exact reason, the
+  thing to quote in feedback (section 23).
+- **Undo** -- for a sale, payment, note or expense the cloud does not have. It
+  asks first ("Undo this sale?"), then takes it off this device; a sale's items go
+  back into the cart with their stock, so you can sell them again. Undo checks the
+  cloud first, so it needs a connection, and something the cloud already has
+  "can't be undone here".
 
 "Everything on this device is in the cloud." means there is nothing to lose if
 this device were lost.
